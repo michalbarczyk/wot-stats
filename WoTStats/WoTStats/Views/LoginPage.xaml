@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="WoTStats.Views.LoginPage" >
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+            <Frame BackgroundColor="#BF043055" HasShadow="False">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Entry x:Name="Nickname" Text="{Binding Nickname}" Placeholder="nickname"   
+                           PlaceholderColor="White" HeightRequest="40"   
+                             
+                           TextColor="White"/>
+                    
+                </StackLayout>
+            </Frame>
+            <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
