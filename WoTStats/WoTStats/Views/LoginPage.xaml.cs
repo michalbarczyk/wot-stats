@@ -18,15 +18,11 @@ namespace WoTStats.Views
         {
             var loginViewModel = new LoginViewModel();
             this.BindingContext = loginViewModel;
-            loginViewModel.DisplayInvalidLoginPrompt += () => DisplayAlert("Invalid login", "Type correct login", "OK");
+            loginViewModel.DisplayInvalidLoginPrompt += (string s) => DisplayAlert($"Invalid login: {s} matching nicknames", "Type correct login", "OK");
             InitializeComponent();
 
-            //Nickname.Completed += (object sender, EventArgs e) =>
-               // DisplayAlert("COMPLETED", "Empty spaces...", "OK");
-            
-            
-               
-
+            NicknameEntry.Completed += (object sender, EventArgs e) =>
+               DisplayAlert("DEBUG", $"Quantity of users in DB = {App.Database.GetUsersQuantity().ToString()}", "OK");
 
         }
     }

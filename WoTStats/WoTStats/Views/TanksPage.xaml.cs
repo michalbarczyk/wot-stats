@@ -10,11 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace WoTStats.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty("Name", "name")]
     public partial class TanksPage : ContentPage
     {
+        public string Name { set; get; }
+
+
+
         public TanksPage()
         {
             InitializeComponent();
+            BindingContext = Name;
         }
     }
 }

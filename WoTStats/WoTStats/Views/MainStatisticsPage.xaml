@@ -5,10 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WoTStats.Views.MainStatisticsPage"
-             Title="Main Stats">
+             Title="Main Statistics">
+
+    
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Nickname}"
+            <Label Text="{Binding Nickname}" FontSize="Large"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Label Text="{Binding AccountId}"

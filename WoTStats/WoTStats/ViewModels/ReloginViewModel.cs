@@ -13,10 +13,21 @@ using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class ReloginViewModel : INotifyPropertyChanged
     {
+        public delegate void UserInsertedEventHandler(object source, EventArgs args);
+
+        public event UserInsertedEventHandler UserInserted;
+
+        protected virtual void OnUserInserted()
+        {
+            if (UserInserted != null)
+                UserInserted(this, EventArgs.Empty);
+        }
+
+
         public Action<string> DisplayInvalidLoginPrompt;
-        
+
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         private string nickname;
         public string Nickname
@@ -28,18 +39,10 @@ namespace WoTStats.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public ICommand SubmitCommand { protected set; get; }
-        public LoginViewModel()
-        {
-            if (App.Database.GetUsersQuantity() > 0)
-            {
-                Shell.Current.GoToAsync("//main").Wait();
-                return;
-            }
-                
-            
 
+        public ICommand SubmitCommand { protected set; get; }
+        public ReloginViewModel()
+        {
             SubmitCommand = new Command(OnSubmit);
         }
         public async void OnSubmit()
@@ -61,18 +64,19 @@ namespace WoTStats.ViewModels
                     var userToBeDeleted = allUsers[0];
                     await App.Database.DeleteUserAsync(userToBeDeleted);
                 }
-                
+
 
                 var result = await App.Database.InsertUserAsync(user);
+                OnUserInserted();
 
-                await Shell.Current.GoToAsync("//main");
+                await Shell.Current.GoToAsync("//main/personal");
             }
             else
             {
                 DisplayInvalidLoginPrompt(accountBasicInfo.Meta.Count.ToString());
-                
+
             }
-            
+
         }
 
         void OnPropertyChanged([CallerMemberName] string name = "")

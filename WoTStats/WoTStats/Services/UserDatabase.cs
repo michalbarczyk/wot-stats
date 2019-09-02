@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
@@ -10,7 +11,7 @@ namespace WoTStats.Services
     {
         private readonly SQLiteAsyncConnection databaseAsyncConnection;
         private readonly SQLiteConnection databaseConnection;
-       
+
 
         public UserDatabase(string dbPath)
         {

@@ -1,0 +1,55 @@
+﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:WoTStats.Views;assembly=WoTStats"
+       x:Class="WoTStats.AppShell"   
+       FlyoutBehavior="Disabled">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">ForestGreen</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="ForestGreen" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="ShellItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    
+    <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}"  />
+    
+
+    <ShellItem Route="main" Title="Personal Data">
+        <Tab Title="Personal" Route="personal" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate views:MainStatisticsPage}"/>
+        </Tab>
+
+        <Tab Title="Tanks" Route="tanks" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate views:TanksPage}"/>
+        </Tab>
+
+        <Tab Title="Recomm." Route="recom" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate views:RecommendationsPage}"/>
+        </Tab>
+
+        <Tab Title="Settings" Icon="tab_about.png">
+            <ShellContent Title="Settings-1" ContentTemplate="{DataTemplate views:SettingsPage}"/>
+            <!--ShellContent Title="Settings-2" ContentTemplate="{DataTemplate views:SettingsPage}"/ -->
+            
+        </Tab>
+
+    </ShellItem>
+    
+    <!--ShellContent Title="Settings-3" ContentTemplate="{DataTemplate views:SettingsPage}"/-->
+    
+
+    <!--MenuItem Text="Change User" IconImageSource="tab_feed.png" Command="{Binding .}" /-->
+    
+</Shell>
