@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using WoTStats.Models.DatabaseModels;
 using WoTStats.Services;
 using WoTStats.Views;
 using Xamarin.Forms;
@@ -17,23 +18,21 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users02.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users06.db3")));
             }
         }
         public App()
         {
             InitializeComponent();
 
-            /*if (Database.GetUsersQuantity() == 0)
+            if (Database.GetUsersQuantity() == 0)
             {
                 MainPage = new LoginPage();
             }
             else
             {
                 MainPage = new AppShell();
-            }*/
-
-            MainPage = new AppShell();
+            }
         }
 
         protected override void OnStart()

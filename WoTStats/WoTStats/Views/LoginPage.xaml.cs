@@ -21,8 +21,7 @@ namespace WoTStats.Views
             loginViewModel.DisplayInvalidLoginPrompt += (string s) => DisplayAlert($"Invalid login: {s} matching nicknames", "Type correct login", "OK");
             InitializeComponent();
 
-            NicknameEntry.Completed += (object sender, EventArgs e) =>
-               DisplayAlert("DEBUG", $"Quantity of users in DB = {App.Database.GetUsersQuantity().ToString()}", "OK");
+           
 
         }
     }

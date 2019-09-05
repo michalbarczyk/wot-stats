@@ -15,11 +15,16 @@ namespace WoTStats.Views
     {
         public  MainStatisticsPage()
         {
-            var mainStatisticsViewModel = new MainStatisticsViewModel();
-            BindingContext = mainStatisticsViewModel;
 
+            
             InitializeComponent();
    
+        }
+
+        protected override void OnAppearing()
+        {
+            var mainStatisticsViewModel = new MainStatisticsViewModel();
+            BindingContext = mainStatisticsViewModel;
         }
     }
 }

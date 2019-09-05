@@ -32,14 +32,6 @@ namespace WoTStats.ViewModels
         public ICommand SubmitCommand { protected set; get; }
         public LoginViewModel()
         {
-            if (App.Database.GetUsersQuantity() > 0)
-            {
-                Shell.Current.GoToAsync("//main").Wait();
-                return;
-            }
-                
-            
-
             SubmitCommand = new Command(OnSubmit);
         }
         public async void OnSubmit()
@@ -61,11 +53,11 @@ namespace WoTStats.ViewModels
                     var userToBeDeleted = allUsers[0];
                     await App.Database.DeleteUserAsync(userToBeDeleted);
                 }
+
                 
+                await App.Database.InsertUserAsync(user);
 
-                var result = await App.Database.InsertUserAsync(user);
-
-                await Shell.Current.GoToAsync("//main");
+                GoToMainShellAsync();
             }
             else
             {
@@ -73,6 +65,12 @@ namespace WoTStats.ViewModels
                 
             }
             
+        }
+
+        private async void GoToMainShellAsync()
+        {
+            Application.Current.MainPage = new AppShell();
+            await Shell.Current.GoToAsync("//main");
         }
 
         void OnPropertyChanged([CallerMemberName] string name = "")

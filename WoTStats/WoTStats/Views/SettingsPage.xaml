@@ -9,7 +9,7 @@
             Title="Settings" >
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout" Clicked="OnLogout" />
+        <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>

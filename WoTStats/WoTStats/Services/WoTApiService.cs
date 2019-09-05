@@ -19,17 +19,17 @@ namespace WoTStats.Services
             //client.DefaultRequestHeaders.Add("Accept", "application/json");
         }
 
-        public async Task<AccountBasicInfo> GetAccountBasicInfoAsync(string uri)
+        public async Task<AccountBasicInfo> GetAccountBasicInfoAsync(string name)
         {
             AccountBasicInfo accountBasicInfo = null;
 
-            uri =
-                $"https://api.worldoftanks.eu/wot/account/list/?application_id=85a2009c52d5d8feb52b45ec88454405&search={uri}";
-            Debug.WriteLine("\tPROP_URI: {0}", uri);
+            name =
+                $"https://api.worldoftanks.eu/wot/account/list/?application_id={Const.WOT_API_APPLICATION_ID}&search={name}";
+           
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync(uri);
+                HttpResponseMessage response = await client.GetAsync(name);
 
                 if (response.IsSuccessStatusCode)
                 {

@@ -22,9 +22,9 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    
-    <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}"  />
-    
+
+    <!--ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}"  / -->
+
 
     <ShellItem Route="main" Title="Personal Data">
         <Tab Title="Personal" Route="personal" Icon="tab_feed.png">

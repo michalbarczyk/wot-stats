@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WoTStats.Models.DatabaseModels;
+using WoTStats.ViewModels;
 using WoTStats.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace WoTStats
 {
@@ -14,35 +17,11 @@ namespace WoTStats
     [DesignTimeVisible(false)]
     public partial class AppShell : Shell
     {
+
         public AppShell()
         {
             InitializeComponent();
-
-            Routing.RegisterRoute("relogin", typeof(ReloginPage));
-
-            /*if (App.Database.GetUsersQuantity() == 0)
-            {
-                Shell.Current.GoToAsync("login").Wait();
-
-
-            }
-
-            
-
-            /*BindingContext = new Command(async () =>
-            {
-                
-
-                //await Shell.Current.GoToAsync("login");
-                //Shell.Current.FlyoutIsPresented = false;
-                //Shell.Current.FlyoutBehavior = FlyoutBehavior.Disabled;
-
-            });*/
-
-
-            
+            Routing.RegisterRoute("login", typeof(LoginPage));
         }
     }
-
-    
 }
