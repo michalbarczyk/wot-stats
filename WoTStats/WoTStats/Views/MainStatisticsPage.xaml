@@ -45,7 +45,13 @@
         <Label Text="{Binding AccountId}"
                VerticalOptions="CenterAndExpand" 
                HorizontalOptions="CenterAndExpand" />
-        <CollectionView Margin="20"
+        <Label Text="{Binding WinRate}" FontSize="32"
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="CenterAndExpand" />
+        <Button Command="{Binding GetData}" Text="Login" TextColor="White"  
+                FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                BackgroundColor="Firebrick" />
+        <!--CollectionView Margin="20"
                         ItemsSource="{Binding TmpList}">
 
             <CollectionView.ItemTemplate>
@@ -76,6 +82,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
 
-        </CollectionView>
+        </ -->
     </StackLayout>
 </ContentPage>

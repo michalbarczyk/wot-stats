@@ -10,17 +10,11 @@ using WoTStats.Models.RestModels;
 
 namespace WoTStats.Services.Rest
 {
-    class PlayerBasicInfoRestService
+    class PlayerBasicInfoRestService : BaseRestService
     {
-        private HttpClient client;
-
-        private readonly string bareUrlPartFirst = "https://api.worldoftanks.";
-        private readonly string bareUrlPartSecond = $"/wot/account/list/?application_id={Const.WOT_API_APPLICATION_ID}&search=";
-            
-
         public PlayerBasicInfoRestService()
         {
-            client = new HttpClient();
+            base.BareUrlSpecificPart = $"/account/list/?application_id={Const.WOT_API_APPLICATION_ID}&search=";
         }
 
         public async Task<PlayerBasicInfo> GetPlayerBasicInfoAsync(string nickname, WoTServer server)
@@ -36,6 +30,7 @@ namespace WoTStats.Services.Rest
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
+
                     playerBasicInfo = JsonConvert.DeserializeObject<PlayerBasicInfo>(content);
 
                 }
@@ -49,27 +44,9 @@ namespace WoTStats.Services.Rest
             return playerBasicInfo;
         }
 
-        private string GetFullUrl(string nickname, WoTServer server)
+        protected override string GetFullUrl(string nickname, WoTServer server)
         {
-            string urlServerRepresentation = null;
-
-            switch (server)
-            {
-                case WoTServer.ru:
-                    urlServerRepresentation = "ru";
-                    break;
-                case WoTServer.eu:
-                    urlServerRepresentation = "eu";
-                    break;
-                case WoTServer.na:
-                    urlServerRepresentation = "com";
-                    break;
-                case WoTServer.asia:
-                    urlServerRepresentation = "asia";
-                    break;
-            }
-
-            return $"{bareUrlPartFirst}{urlServerRepresentation}{bareUrlPartSecond}{nickname}";
+            return $"{base.GetServerEndpoint(server)}{BareUrlSpecificPart}{nickname}";
         }
     }
 }
