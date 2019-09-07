@@ -21,30 +21,13 @@ namespace WoTStats.ViewModels
         public string AccountId { get; set; }
         public string WinRate { get; set; }
 
-        public ICommand GetData { get; set; }
+        //public ICommand GetData { get; set; }
 
         public IList<User> TmpList { get; set; }
 
         public MainStatisticsViewModel()
         {
-            var usersTask = App.Database.GetUsersAsync();
-
-            var user = usersTask.Result[0];
-
-            Nickname = user.Nickname;
-            AccountId = user.AccountId;
-
-            //PlayerPersonalDataRestService restService = new PlayerPersonalDataRestService();
-
-            //var playerPersonalData = restService
-            //    .GetPlayerPersonalDataAsync(user.AccountId, user.WoTServer).Result;
-                
-
-            //var statsAll = playerPersonalData.statistics.all;
-
-            GetData = new Command(Cmd);
-
-            WinRate = 15.45.ToString(); //((double) statsAll.wins / statsAll.battles);
+             //((double) statsAll.wins / statsAll.battles);
 
             /*TmpList = new List<User>();
 
@@ -62,11 +45,14 @@ namespace WoTStats.ViewModels
 
         }
 
-        private async void Cmd()
+        public async void OnAppearing()
         {
             var users = await App.Database.GetUsersAsync();
 
             var user = users[0];
+
+            Nickname = user.Nickname;
+            AccountId = user.AccountId;
 
             PlayerPersonalDataRestService restService = new PlayerPersonalDataRestService();
 
@@ -76,11 +62,17 @@ namespace WoTStats.ViewModels
 
             var statsAll = playerPersonalData.statistics.all;
 
-            WinRate = playerPersonalData.nickname;
+            //GetData = new Command(Cmd);
+            WinRate = statsAll.battles.ToString();
+
+            OnPropertyChanged("Nickname");
+            OnPropertyChanged("AccountId");
             OnPropertyChanged("WinRate");
         }
 
-        void OnPropertyChanged(/*[CallerMemberName]*/ string name = "")
+        
+
+        void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }

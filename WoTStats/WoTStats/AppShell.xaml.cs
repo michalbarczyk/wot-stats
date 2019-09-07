@@ -22,6 +22,10 @@ namespace WoTStats
         {
             InitializeComponent();
             Routing.RegisterRoute("login", typeof(LoginPage));
+
+
         }
+
+        
     }
 }

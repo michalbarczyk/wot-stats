@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,10 @@ namespace WoTStats.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainStatisticsPage : ContentPage
     {
+        private MainStatisticsViewModel viewModel;
         public MainStatisticsPage()
         {
-            BindingContext = new MainStatisticsViewModel();
-
+            BindingContext = viewModel = new MainStatisticsViewModel();
             InitializeComponent();
             /*var TmpList = new List<User>();
 
@@ -32,7 +33,9 @@ namespace WoTStats.Views
             }
 
             cv.ItemsSource = TmpList;*/
-            
         }
+
+        protected override void OnAppearing() => viewModel.OnAppearing();
+        
     }
 }

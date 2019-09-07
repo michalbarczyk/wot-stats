@@ -28,8 +28,6 @@ namespace WoTStats.Services.Rest
             {
                 HttpResponseMessage response = await client.GetAsync(fullUrl);
 
-                Debug.WriteLine(response.Content);
-
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
@@ -39,23 +37,14 @@ namespace WoTStats.Services.Rest
 
                     var playerPersonalDataJToken = data[accountId];
 
-                    //
                     var settings = new JsonSerializerSettings
                     {
                         NullValueHandling = NullValueHandling.Ignore,
                         MissingMemberHandling = MissingMemberHandling.Ignore
                     };
                     
-                    //
-
                     playerPersonalData = JsonConvert.DeserializeObject<PlayerPersonalData>(playerPersonalDataJToken.ToString(), settings);
-                    Debug.WriteLine("\tAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 }
-                else
-                {
-                    Debug.WriteLine("\tXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxx");
-                }
-
             }
             catch (Exception ex)
             {

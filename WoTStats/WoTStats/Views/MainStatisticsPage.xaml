@@ -48,9 +48,9 @@
         <Label Text="{Binding WinRate}" FontSize="32"
                VerticalOptions="CenterAndExpand" 
                HorizontalOptions="CenterAndExpand" />
-        <Button Command="{Binding GetData}" Text="Login" TextColor="White"  
+        <!--Button Text="Login" TextColor="White"  
                 FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                BackgroundColor="Firebrick" />
+                BackgroundColor="Firebrick" / -->
         <!--CollectionView Margin="20"
                         ItemsSource="{Binding TmpList}">
 
