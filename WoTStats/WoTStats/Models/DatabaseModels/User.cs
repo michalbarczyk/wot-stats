@@ -11,5 +11,7 @@ namespace WoTStats.Models.DatabaseModels
         public int Id { get; set; }
         public string Nickname { get; set; }
         public string AccountId { get; set; }
+
+        public WoTServer WoTServer { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +14,25 @@ namespace WoTStats.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainStatisticsPage : ContentPage
     {
-        public  MainStatisticsPage()
+        public MainStatisticsPage()
         {
+            BindingContext = new MainStatisticsViewModel();
 
-            
             InitializeComponent();
-   
-        }
+            /*var TmpList = new List<User>();
 
-        protected override void OnAppearing()
-        {
-            var mainStatisticsViewModel = new MainStatisticsViewModel();
-            BindingContext = mainStatisticsViewModel;
+            for (int i = 0; i < 23; i++)
+            {
+                TmpList.Add(new User
+                {
+                    Nickname = "named item " + i.ToString(),
+                    AccountId = (i + i * i).ToString(),
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Golden_Snub-nosed_Monkeys%2C_Qinling_Mountains_-_China.jpg/165px-Golden_Snub-nosed_Monkeys%2C_Qinling_Mountains_-_China.jpg"
+                });
+            }
+
+            cv.ItemsSource = TmpList;*/
+            
         }
     }
 }

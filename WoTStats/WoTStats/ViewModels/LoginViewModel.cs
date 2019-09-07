@@ -8,7 +8,7 @@ using System.Windows.Input;
 using WoTStats.Models;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels;
-using WoTStats.Services;
+using WoTStats.Services.Rest;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
@@ -19,6 +19,10 @@ namespace WoTStats.ViewModels
         
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         private string nickname;
+        private WoTServer wotServer;
+
+        
+        
         public string Nickname
         {
             get { return nickname; }
@@ -28,23 +32,47 @@ namespace WoTStats.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        //public string PickedServer { set; get; }
+
+        public IList<WoTServer> ServerOptions { set; get; }
+        public WoTServer WoTServer
+        {
+            get { return wotServer; }
+            set
+            {
+                wotServer = value;
+                OnPropertyChanged();
+            }
+        }
         
         public ICommand SubmitCommand { protected set; get; }
         public LoginViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
+            ServerOptions = new List<WoTServer>(new WoTServer[]
+            {
+                WoTServer.ru,
+                WoTServer.eu,
+                WoTServer.na,
+                WoTServer.asia
+            });
+
+            //WoTServer = new WoTServer();
+
         }
         public async void OnSubmit()
         {
-            WoTApiService apiService = new WoTApiService();
-            AccountBasicInfo accountBasicInfo = await apiService.GetAccountBasicInfoAsync(nickname);
+            PlayerBasicInfoRestService apiService = new PlayerBasicInfoRestService();
+            PlayerBasicInfo playerBasicInfo = await apiService.GetPlayerBasicInfoAsync(nickname, wotServer);
 
-            if (accountBasicInfo.Meta.Count > 0)
+            if (playerBasicInfo.Meta.Count > 0)
             {
                 User user = new User
                 {
-                    Nickname = accountBasicInfo.Datas[0].Nickname,
-                    AccountId = accountBasicInfo.Datas[0].AccountId
+                    Nickname = playerBasicInfo.Datas[0].Nickname,
+                    AccountId = playerBasicInfo.Datas[0].AccountId,
+                    WoTServer = wotServer
                 };
 
                 var allUsers = await App.Database.GetUsersAsync();
@@ -61,7 +89,7 @@ namespace WoTStats.ViewModels
             }
             else
             {
-                DisplayInvalidLoginPrompt(accountBasicInfo.Meta.Count.ToString());
+                DisplayInvalidLoginPrompt(playerBasicInfo.Meta.Count.ToString());
                 
             }
             

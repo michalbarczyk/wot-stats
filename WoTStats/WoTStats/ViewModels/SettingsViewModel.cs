@@ -10,9 +10,15 @@ namespace WoTStats.ViewModels
     {
         public ICommand LogoutCommand { protected set; get; }
 
+
         public SettingsViewModel()
         {
             LogoutCommand = new Command(async () => await Shell.Current.GoToAsync("login"));
+            
+
+            
         }
+
+        
     }
 }

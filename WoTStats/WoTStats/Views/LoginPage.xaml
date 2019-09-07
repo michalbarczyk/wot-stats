@@ -7,18 +7,29 @@
 
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
-            <Frame BackgroundColor="#BF043055" HasShadow="False">
+
+            <Frame BackgroundColor="Firebrick" HasShadow="False">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Entry x:Name="NicknameEntry" Text="{Binding Nickname}" Placeholder="nickname"   
                            PlaceholderColor="White" HeightRequest="40"   
-                             
                            TextColor="White"/>
-                    
                 </StackLayout>
             </Frame>
+
+            <Frame BackgroundColor="Firebrick" HasShadow="False">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Picker ItemsSource="{Binding ServerOptions}" 
+                            Title="Server" 
+                            SelectedItem="{Binding WoTServer, Mode=TwoWay}"
+                             
+                            TextColor="White" TitleColor="White"/>
+                </StackLayout>
+            </Frame>
+
             <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="#088da5" />
+                    BackgroundColor="Firebrick" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace WoTStats.Models.RestModels
 {
-    class AccountBasicInfo
+    class PlayerBasicInfo
     {
         [JsonProperty("status")]
         public string Status { get; set; }
