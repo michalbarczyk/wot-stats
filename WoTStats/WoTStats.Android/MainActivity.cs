@@ -24,7 +24,7 @@ namespace WoTStats.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            /* ADDED */ Window.SetStatusBarColor(Android.Graphics.Color.ForestGreen);
+            /* ADDED */ Window.SetStatusBarColor(Android.Graphics.Color.Black);
             LoadApplication(new App());
             
         }

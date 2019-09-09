@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels;
+using WoTStats.Services;
 using WoTStats.Services.Rest;
 using Xamarin.Forms;
 
@@ -19,11 +20,13 @@ namespace WoTStats.ViewModels
 
         public string Nickname { get; set; }
         public string AccountId { get; set; }
-        public string WinRate { get; set; }
-
-        //public ICommand GetData { get; set; }
-
+        public string Battles { get; set; }
+        public string MaxFrags { get; set; }
+        public string MaxDamage { get; set; }
+        public string AvgExperience { get; set; }
         public IList<User> TmpList { get; set; }
+
+        public string ExampleWN8 { get; set; }
 
         public MainStatisticsViewModel()
         {
@@ -56,18 +59,39 @@ namespace WoTStats.ViewModels
 
             PlayerPersonalDataRestService restService = new PlayerPersonalDataRestService();
 
-            var playerPersonalData = await restService
-                .GetPlayerPersonalDataAsync(user.AccountId, user.WoTServer);
+            var playerPersonalData = await restService.GetPlayerPersonalDataAsync(user.AccountId, user.WoTServer);
 
 
             var statsAll = playerPersonalData.statistics.all;
 
             //GetData = new Command(Cmd);
-            WinRate = statsAll.battles.ToString();
+            Battles = statsAll.battles.ToString();
+            MaxDamage = statsAll.max_damage.ToString();
+            MaxFrags = statsAll.max_frags.ToString();
+            AvgExperience = statsAll.battle_avg_xp.ToString();
 
+            OnPropertyChanged("Battles");
+            OnPropertyChanged("MaxDamage");
+            OnPropertyChanged("AvgExperience");
+            OnPropertyChanged("MaxFrags");
             OnPropertyChanged("Nickname");
-            OnPropertyChanged("AccountId");
-            OnPropertyChanged("WinRate");
+
+            ExampleWN8 = "example ScorpionG WN8 = " + new CalculatorWN8
+            {
+                AverageDamage = 1272.46,
+                AverageSpot = 0.487,
+                AverageFrag = 0.778,
+                AverageDefense = 0.379,
+                WinRate = 0.48276,
+                ExpectedDamage = 1432,
+                ExpectedSpot = 0.558,
+                ExpectedFrag = 0.995,
+                ExpectedDefense = 0.627,
+                ExpectedWinRate = 0.511
+            }.GetWN8Value();
+
+            OnPropertyChanged("ExampleWN8");
+
         }
 
         
