@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels.PlayerBasicInfo;
-using WoTStats.Services.Rest;
+using WoTStats.Services.Rest.WoT;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels

@@ -13,12 +13,13 @@ namespace WoTStats.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
+        private SettingsViewModel viewModel;
         public SettingsPage()
         {
-            BindingContext = new SettingsViewModel();
+            BindingContext = viewModel = new SettingsViewModel();
             InitializeComponent();
         }
 
-        
+        protected override void OnAppearing() => viewModel.OnAppearing();
     }
 }

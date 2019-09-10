@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels.PlayerBasicInfo;
 
-namespace WoTStats.Services.Rest
+namespace WoTStats.Services.Rest.WoT
 {
     class PlayerBasicInfoRestService : BaseRestService
     {

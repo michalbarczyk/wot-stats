@@ -9,7 +9,7 @@ using System.Windows.Input;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels;
 using WoTStats.Services;
-using WoTStats.Services.Rest;
+using WoTStats.Services.Rest.WoT;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
@@ -26,22 +26,7 @@ namespace WoTStats.ViewModels
 
         public MainStatisticsViewModel()
         {
-             //((double) statsAll.wins / statsAll.battles);
-
-            /*TmpList = new List<User>();
-
-            for (int i = 0; i < 23; i++)
-            {
-                TmpList.Add(new User
-                {
-                    Nickname = "named item " + i.ToString(),
-                    AccountId = (2 * i - 1 + i * i).ToString()
-                });
-            }*/
-
             
-
-
         }
 
         public async void OnAppearing()

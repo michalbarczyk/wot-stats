@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text;
 using WoTStats.Models.DatabaseModels;
 
-namespace WoTStats.Services.Rest
+namespace WoTStats.Services.Rest.WoT
 {
     abstract class BaseRestService
     {

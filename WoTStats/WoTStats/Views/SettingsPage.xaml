@@ -14,7 +14,10 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Settings ..." 
+            <Label Text="Settings ... XVM test below" 
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding ReferWN}" FontSize="70" 
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" />
         </StackLayout>

@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels.PlayerVehicleStatistics;
-using WoTStats.Services.Rest;
+using WoTStats.Services.Rest.WoT;
 
 namespace WoTStats.ViewModels
 {
