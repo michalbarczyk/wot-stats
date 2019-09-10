@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WoTStats.Models.RestModels
+namespace WoTStats.Models.RestModels.PlayerPersonalData
 {
     public class PlayerPersonalData
     {

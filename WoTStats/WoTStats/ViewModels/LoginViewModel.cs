@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
-using WoTStats.Models;
 using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels;
+using WoTStats.Models.RestModels.PlayerBasicInfo;
 using WoTStats.Services.Rest;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : BaseViewModel
     {
         public Action<string> DisplayInvalidLoginPrompt;
         
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        
         private string nickname;
         private WoTServer wotServer;
 
@@ -99,11 +96,6 @@ namespace WoTStats.ViewModels
         {
             Application.Current.MainPage = new AppShell();
             await Shell.Current.GoToAsync("//main");
-        }
-
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

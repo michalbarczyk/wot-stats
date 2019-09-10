@@ -25,19 +25,6 @@
         </Style>
     </ContentPage.Resources>
 
-    <!-- StackLayout>
-        <Label Text="{Binding Nickname}" FontSize="Large"
-               VerticalOptions="CenterAndExpand" 
-               HorizontalOptions="CenterAndExpand" />
-        <Label Text="{Binding AccountId}"
-               VerticalOptions="CenterAndExpand" 
-               HorizontalOptions="CenterAndExpand" />
-        <Label Text="{Binding WinRate}" FontSize="32"
-               VerticalOptions="CenterAndExpand" 
-               HorizontalOptions="CenterAndExpand" />
-        
-    </-->
-
     <Grid VerticalOptions="FillAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

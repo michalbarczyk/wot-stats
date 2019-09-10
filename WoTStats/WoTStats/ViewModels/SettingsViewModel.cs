@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
 {
-    class SettingsViewModel
+    class SettingsViewModel : BaseViewModel
     {
         public ICommand LogoutCommand { protected set; get; }
 

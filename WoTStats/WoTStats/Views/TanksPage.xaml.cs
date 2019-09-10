@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WoTStats.Models.DatabaseModels;
+using WoTStats.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,14 +15,18 @@ namespace WoTStats.Views
     [QueryProperty("Name", "name")]
     public partial class TanksPage : ContentPage
     {
-        public string Name { set; get; }
+        private TanksViewModel viewModel;
 
-
+        public IList<User> VehiclesStatistics { get; set; }
 
         public TanksPage()
         {
+            BindingContext = viewModel = new TanksViewModel();
+
+            
             InitializeComponent();
-            BindingContext = Name;
         }
+
+        protected override void OnAppearing() => viewModel.OnAppearing();
     }
 }

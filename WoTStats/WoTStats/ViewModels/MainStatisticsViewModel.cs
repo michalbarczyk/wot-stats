@@ -14,18 +14,14 @@ using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
 {
-    public class MainStatisticsViewModel : INotifyPropertyChanged
+    public class MainStatisticsViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
         public string Nickname { get; set; }
         public string AccountId { get; set; }
         public string Battles { get; set; }
         public string MaxFrags { get; set; }
         public string MaxDamage { get; set; }
         public string AvgExperience { get; set; }
-        public IList<User> TmpList { get; set; }
-
         public string ExampleWN8 { get; set; }
 
         public MainStatisticsViewModel()
@@ -92,13 +88,6 @@ namespace WoTStats.ViewModels
 
             OnPropertyChanged("ExampleWN8");
 
-        }
-
-        
-
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

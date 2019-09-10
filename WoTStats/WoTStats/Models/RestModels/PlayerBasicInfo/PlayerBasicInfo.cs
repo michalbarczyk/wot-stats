@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace WoTStats.Models.RestModels
+namespace WoTStats.Models.RestModels.PlayerBasicInfo
 {
     class PlayerBasicInfo
     {

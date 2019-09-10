@@ -7,13 +7,33 @@
              x:Class="WoTStats.Views.TanksPage"
              Title="Tanks">
     <ContentPage.Content>
+
         <StackLayout>
-            <Label Text="Tanks Page content"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding .}" FontSize="18"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" />
+
+            <CollectionView Margin="20" ItemsSource="{Binding VehiclesStatistics}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>-->
+                            <Label  
+                                   Text="{Binding all.battles}" 
+                                   FontAttributes="Bold" 
+                                   HeightRequest="30"
+                                   WidthRequest="120" />
+                            
+                        <!--</Grid>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
