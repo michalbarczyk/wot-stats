@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels.PlayerVehicleStatistics;
-using WoTStats.Services.Rest.WoT;
+using WoTStats.Models.RestModels.WoT.PlayerVehicleStatistics;
+using WoTStats.Services.RestServices.WoT;
 
 namespace WoTStats.ViewModels
 {
@@ -16,7 +16,7 @@ namespace WoTStats.ViewModels
         public async void OnAppearing()
         {
             var dataPrivider = new PlayerVehiclesStatisticsRestService();
-            VehiclesStatistics = new List<PlayerVehicleStatistics>();
+            //VehiclesStatistics = new List<PlayerVehicleStatistics>();
 
            var users = await App.Database.GetUsersAsync();
 

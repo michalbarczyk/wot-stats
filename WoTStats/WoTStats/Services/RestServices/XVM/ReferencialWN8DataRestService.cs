@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WoTStats.Models.RestModels.XVM;
 
-namespace WoTStats.Services.Rest.XVM
+namespace WoTStats.Services.RestServices.XVM
 {
     class ReferencialWN8DataRestService
     {

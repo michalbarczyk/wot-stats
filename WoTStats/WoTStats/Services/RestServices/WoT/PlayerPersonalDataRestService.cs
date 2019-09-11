@@ -7,21 +7,20 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WoTStats.Models.DatabaseModels;
+using WoTStats.Models.RestModels.WoT.PlayerPersonalData;
 
-using WoTStats.Models.RestModels.PlayerVehicleStatistics;
-
-namespace WoTStats.Services.Rest.WoT
+namespace WoTStats.Services.RestServices.WoT
 {
-    class PlayerVehiclesStatisticsRestService : BaseRestService
+    class PlayerPersonalDataRestService : BaseRestService
     {
-        public PlayerVehiclesStatisticsRestService()
+        public PlayerPersonalDataRestService()
         {
-            base.BareUrlSpecificPart = $"/tanks/stats/?application_id={Const.WOT_API_APPLICATION_ID}&account_id=";
+            base.BareUrlSpecificPart = $"/account/info/?application_id={Const.WOT_API_APPLICATION_ID}&account_id=";
         }
 
-        public async Task<List<PlayerVehicleStatistics>> GetPlayerVehiclesStatisticsAsync(string accountId, WoTServer server)
+        public async Task<PlayerPersonalData> GetPlayerPersonalDataAsync(string accountId, WoTServer server)
         {
-            List<PlayerVehicleStatistics> playerVehiclesStatistics = null;
+            PlayerPersonalData playerPersonalData = null;
 
             var fullUrl = GetFullUrl(accountId, server);
 
@@ -36,15 +35,15 @@ namespace WoTStats.Services.Rest.WoT
                     var wholeJObject = JObject.Parse(content);
                     var data = wholeJObject["data"];
 
-                    var playerVehiclesStatisticsJToken = data[accountId];
+                    var playerPersonalDataJToken = data[accountId];
 
                     var settings = new JsonSerializerSettings
                     {
                         NullValueHandling = NullValueHandling.Ignore,
                         MissingMemberHandling = MissingMemberHandling.Ignore
                     };
-
-                    playerVehiclesStatistics = JsonConvert.DeserializeObject<List<PlayerVehicleStatistics>>(playerVehiclesStatisticsJToken.ToString(), settings);
+                    
+                    playerPersonalData = JsonConvert.DeserializeObject<PlayerPersonalData>(playerPersonalDataJToken.ToString(), settings);
                 }
             }
             catch (Exception ex)
@@ -52,7 +51,7 @@ namespace WoTStats.Services.Rest.WoT
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
 
-            return playerVehiclesStatistics;
+            return playerPersonalData;
         }
 
         protected override string GetFullUrl(string accountId, WoTServer server)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WoTStats.Models.RestModels.PlayerVehicleStatistics
+namespace WoTStats.Models.RestModels.WoT.PlayerVehicleStatistics
 {
     class PlayerVehicleStatistics
     {

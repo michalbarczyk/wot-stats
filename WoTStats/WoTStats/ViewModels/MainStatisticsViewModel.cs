@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels;
 using WoTStats.Services;
-using WoTStats.Services.Rest.WoT;
+using WoTStats.Services.RestServices.WoT;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels

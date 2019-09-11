@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels.PlayerBasicInfo;
-using WoTStats.Services.Rest.WoT;
+using WoTStats.Models.RestModels.WoT.PlayerBasicInfo;
+using WoTStats.Services.RestServices.WoT;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
@@ -29,10 +29,6 @@ namespace WoTStats.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        //public string PickedServer { set; get; }
-
-        public IList<WoTServer> ServerOptions { set; get; }
         public WoTServer WoTServer
         {
             get { return wotServer; }
@@ -42,7 +38,9 @@ namespace WoTStats.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
+        public IList<WoTServer> ServerOptions { set; get; }
+
         public ICommand SubmitCommand { protected set; get; }
         public LoginViewModel()
         {
@@ -54,9 +52,6 @@ namespace WoTStats.ViewModels
                 WoTServer.na,
                 WoTServer.asia
             });
-
-            //WoTServer = new WoTServer();
-
         }
         public async void OnSubmit()
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
-using WoTStats.Services.Rest.XVM;
+using WoTStats.Services.RestServices.XVM;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels

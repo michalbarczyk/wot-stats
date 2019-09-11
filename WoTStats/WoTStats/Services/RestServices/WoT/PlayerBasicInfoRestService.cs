@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels.PlayerBasicInfo;
+using WoTStats.Models.RestModels.WoT.PlayerBasicInfo;
 
-namespace WoTStats.Services.Rest.WoT
+namespace WoTStats.Services.RestServices.WoT
 {
     class PlayerBasicInfoRestService : BaseRestService
     {
