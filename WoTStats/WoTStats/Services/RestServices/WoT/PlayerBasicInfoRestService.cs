@@ -44,7 +44,7 @@ namespace WoTStats.Services.RestServices.WoT
             return playerBasicInfo;
         }
 
-        protected override string GetFullUrl(string nickname, WoTServer server)
+        private string GetFullUrl(string nickname, WoTServer server)
         {
             return $"{base.GetServerEndpoint(server)}{BareUrlSpecificPart}{nickname}";
         }

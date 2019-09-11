@@ -54,7 +54,7 @@ namespace WoTStats.Services.RestServices.WoT
             return playerPersonalData;
         }
 
-        protected override string GetFullUrl(string accountId, WoTServer server)
+        private string GetFullUrl(string accountId, WoTServer server)
         {
             return $"{base.GetServerEndpoint(server)}{BareUrlSpecificPart}{accountId}";
         }

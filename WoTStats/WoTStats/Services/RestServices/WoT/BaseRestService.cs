@@ -19,8 +19,6 @@ namespace WoTStats.Services.RestServices.WoT
             client = new HttpClient();
         }
 
-        protected abstract string GetFullUrl(string parameter, WoTServer server);
-
         protected string GetServerEndpoint(WoTServer server)
         {
             string urlServerRepresentation = null;

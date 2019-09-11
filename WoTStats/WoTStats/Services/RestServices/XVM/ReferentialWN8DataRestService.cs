@@ -7,13 +7,13 @@ using WoTStats.Models.RestModels.XVM;
 
 namespace WoTStats.Services.RestServices.XVM
 {
-    class ReferencialWN8DataRestService
+    class ReferentialWN8DataRestService
     {
         private string endpointXVM = "https://static.modxvm.com/wn8-data-exp/json/wn8exp.json";
 
         private HttpClient client;
 
-        public ReferencialWN8DataRestService()
+        public ReferentialWN8DataRestService()
         {
             this.client = new HttpClient();
         }

@@ -29,7 +29,7 @@ namespace WoTStats.ViewModels
 
         public async void OnAppearing()
         {
-            var provider = new ReferencialWN8DataRestService();
+            var provider = new ReferentialWN8DataRestService();
 
             var result = await provider.GetReferencialWN8DataAsync();
 

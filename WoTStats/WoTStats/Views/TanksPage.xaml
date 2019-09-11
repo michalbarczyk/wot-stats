@@ -7,33 +7,50 @@
              x:Class="WoTStats.Views.TanksPage"
              Title="Tanks">
     <ContentPage.Content>
+        <CollectionView Margin="0,0,0,0"  ItemsSource="{Binding TanksData}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <ContentView Padding="15">
+                        <Frame HasShadow="True" CornerRadius="10" 
+                               Margin="0,0,0,0" Padding="5,5,5,5" 
+                               HeightRequest="60" VerticalOptions="Start" >
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-        <StackLayout>
+                                <Image Source="{Binding ImageUrl}" />
 
-            <CollectionView Margin="20" ItemsSource="{Binding VehiclesStatistics}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <!--<Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>-->
-                            <Label  
-                                   Text="{Binding all.battles}" 
-                                   FontAttributes="Bold" 
-                                   HeightRequest="30"
-                                   WidthRequest="120" />
-                            
-                        <!--</Grid>-->
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                <Label  Text="{Binding Name}" 
+                                        FontAttributes="Bold" />
 
-        </StackLayout>
+                                <Label Grid.Row="0"  Grid.Column="2"
+                                           Text="{Binding AvgDamage}" 
+                                           FontAttributes="Bold" 
+                                            />
+
+                                <Label Grid.Row="1"  Grid.Column="1"
+                                           Text="{Binding Battles}" 
+                                           FontAttributes="Bold" 
+                                            />
+
+                                <Label Grid.Row="1"  Grid.Column="2"
+                                           Text="{Binding WinRate}" 
+                                           FontAttributes="Bold" 
+                                            />
+
+                            </Grid>
+                        </Frame>
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
     </ContentPage.Content>
 </ContentPage>

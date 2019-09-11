@@ -9,7 +9,7 @@ namespace WoTStats.Models.RestModels.WoT.PlayerVehicleStatistics
         public Clan clan { get; set; }
         public StrongholdSkirmish stronghold_skirmish { get; set; }
         public RegularTeam regular_team { get; set; }
-        public int account_id { get; set; }
+        public string account_id { get; set; }
         public int max_xp { get; set; }
         public Company company { get; set; }
         public All all { get; set; }
@@ -20,7 +20,7 @@ namespace WoTStats.Models.RestModels.WoT.PlayerVehicleStatistics
         public object frags { get; set; }
         public int mark_of_mastery { get; set; }
         public object in_garage { get; set; }
-        public int tank_id { get; set; }
+        public string tank_id { get; set; }
 
     }
 
