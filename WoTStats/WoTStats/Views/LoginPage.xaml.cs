@@ -20,9 +20,6 @@ namespace WoTStats.Views
             this.BindingContext = loginViewModel;
             loginViewModel.DisplayInvalidLoginPrompt += (string s) => DisplayAlert($"Invalid login: {s} matching nicknames", "Type correct login", "OK");
             InitializeComponent();
-
-           
-
         }
     }
 }

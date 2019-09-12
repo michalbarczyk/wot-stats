@@ -28,7 +28,12 @@
                                 <Image Source="{Binding ImageUrl}" />
 
                                 <Label  Text="{Binding Name}" 
-                                        FontAttributes="Bold" />
+                                        FontAttributes="Bold" FontSize="Medium" Grid.RowSpan="2" />
+
+                                <Label Grid.Row="0"  Grid.Column="1" FontSize="Micro"
+                                       Text="{Binding WN8}" 
+                                       FontAttributes="Bold" 
+                                />
 
                                 <Label Grid.Row="0"  Grid.Column="2"
                                            Text="{Binding AvgDamage}" 

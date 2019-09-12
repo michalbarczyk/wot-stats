@@ -14,12 +14,10 @@ namespace WoTStats.ViewModels
     {
         public Action<string> DisplayInvalidLoginPrompt;
         
-        
         private string nickname;
+
         private WoTServer wotServer;
 
-        
-        
         public string Nickname
         {
             get { return nickname; }

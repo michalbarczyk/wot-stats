@@ -7,6 +7,14 @@ namespace WoTStats.ViewModels
 {
     public class MainStatisticsViewModel : BaseViewModel
     {
+        private string nickname;
+        private string accountId;
+        private string battles;
+        private string maxFrags;
+        private string maxDamage;
+        private string avgExperience;
+        private string exampleWN8;
+
         public string Nickname { get; set; }
         public string AccountId { get; set; }
         public string Battles { get; set; }
