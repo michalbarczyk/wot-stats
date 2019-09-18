@@ -75,6 +75,7 @@ namespace WoTStats.ViewModels
                 
                 await App.Database.InsertUserAsync(user);
 
+                App.ContentManager = new ContentManager();
                 GoToMainShellAsync();
             }
             else

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WoTStats.ViewModels.DataTemplates
 {
-    class TankVisibleData
+    public class TankVisibleData
     {
         public string Name { get; set; }
         public string WinRate { get; set; }

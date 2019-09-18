@@ -26,6 +26,11 @@ namespace WoTStats.Services
             return databaseAsyncConnection.Table<User>().ToListAsync();
         }
 
+        public List<User> GetUsers()
+        {
+            return databaseConnection.Table<User>().ToList();
+        }
+
         public int GetUsersQuantity()
         {
             return databaseConnection.Table<User>().Count();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,10 @@ namespace WoTStats.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing() => viewModel.OnAppearing();
+        protected override void OnAppearing()
+        {
+            viewModel.OnAppearing();
+            Debug.WriteLine("\n\n OnAppearing invoked in TanksPage\n\n");
+        }
     }
 }

@@ -31,9 +31,9 @@ namespace WoTStats.ViewModels
 
         public async void OnAppearing()
         {
-            var dataProvider = new VisibleTanksDataProvider();
+            //var dataProvider = new VisibleTanksDataProvider();
 
-            TanksData = await dataProvider.GetTanksVisibleDataAsync();
+            TanksData = await App.ContentManager.GetTanksVisibleDataAsync(); //await dataProvider.GetTanksVisibleDataAsync();
         }
     }
 }

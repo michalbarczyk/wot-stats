@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using WoTStats.Services;
 using WoTStats.Services.RestServices.WoT;
 using Xamarin.Forms;
@@ -21,28 +22,18 @@ namespace WoTStats.ViewModels
         public string MaxFrags { get; set; }
         public string MaxDamage { get; set; }
         public string AvgExperience { get; set; }
-        public string ExampleWN8 { get; set; }
 
         public MainStatisticsViewModel()
         {
-            
+            //App.ContentManager.DataPrepared += OnDataPrepared;
+            //App.ContentManager.PrepareData();
         }
 
-        public async void OnAppearing()
+        /*private void OnDataPrepared(object source, EventArgs args)
         {
-            var users = await App.Database.GetUsersAsync();
+            Debug.WriteLine("\n\n OnDataPrepared execution started\n\n");
 
-            var user = users[0];
-
-            Nickname = user.Nickname;
-            AccountId = user.AccountId;
-
-            PlayerPersonalDataRestService restService = new PlayerPersonalDataRestService();
-
-            var playerPersonalData = await restService.GetPlayerPersonalDataAsync(user.AccountId, user.WoTServer);
-
-
-            var statsAll = playerPersonalData.statistics.all;
+            var statsAll = App.ContentManager.PlayerPersonalData.statistics.all; //playerPersonalData.statistics.all;
 
             //GetData = new Command(Cmd);
             Battles = statsAll.battles.ToString();
@@ -71,7 +62,26 @@ namespace WoTStats.ViewModels
             }.GetWN8Value();
 
             OnPropertyChanged("ExampleWN8");
+        }*/
 
+        public async void OnAppearing()
+        {
+            var playerPersonalData = await App.ContentManager.GetPlayerPersonalDataAsync();
+
+            Nickname = App.ContentManager.Nickname;
+
+            var statsAll = playerPersonalData.statistics.all;
+
+            Battles = statsAll.battles.ToString();
+            MaxDamage = statsAll.max_damage.ToString();
+            MaxFrags = statsAll.max_frags.ToString();
+            AvgExperience = statsAll.battle_avg_xp.ToString();
+
+            OnPropertyChanged("Battles");
+            OnPropertyChanged("MaxDamage");
+            OnPropertyChanged("AvgExperience");
+            OnPropertyChanged("MaxFrags");
+            OnPropertyChanged("Nickname");
         }
     }
 }

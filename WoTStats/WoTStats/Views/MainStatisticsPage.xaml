@@ -97,9 +97,6 @@
                 </StackLayout>
             </Frame>
         </Grid>
-        <Label Grid.Row="2" Text="{Binding ExampleWN8}" FontSize="Small" 
-               HorizontalOptions="Center" VerticalOptions="Center"
-               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/> 
         <!--<StackLayout Grid.Row="2" BackgroundColor="Transparent" Orientation="Horizontal" Margin="20" HorizontalOptions="End">
             <ImageButton x:Name="ListBtn" Source="listColor.png" WidthRequest="15" HeightRequest="15" />
             <ImageButton x:Name="GridBtn" Source="grid.png" WidthRequest="15" HeightRequest="15"/>

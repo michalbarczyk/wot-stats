@@ -22,7 +22,10 @@ namespace WoTStats.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing() => viewModel.OnAppearing();
-        
+        protected override void OnAppearing()
+        {
+            viewModel.OnAppearing();
+            Debug.WriteLine("\n\n OnAppearing invoked in MainStatisticsPage\n\n");
+        }
     }
 }

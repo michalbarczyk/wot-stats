@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Services;
 using WoTStats.Views;
@@ -12,6 +14,7 @@ namespace WoTStats
     public partial class App : Application
     {
         private static UserDatabase database;
+        private static ContentManager contentManager;
 
         public static UserDatabase Database
         {
@@ -21,6 +24,13 @@ namespace WoTStats
                            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users07.db3")));
             }
         }
+
+        public static ContentManager ContentManager
+        {
+            get { return contentManager; }
+            set { contentManager = value; }
+        }
+
         public App()
         {
             InitializeComponent();
@@ -31,6 +41,7 @@ namespace WoTStats
             }
             else
             {
+                ContentManager = new ContentManager();
                 MainPage = new AppShell();
             }
         }
