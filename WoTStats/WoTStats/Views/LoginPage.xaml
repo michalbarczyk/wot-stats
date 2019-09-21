@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
 
-            <Frame BackgroundColor="Firebrick" HasShadow="False">
+            <Frame BackgroundColor="Firebrick" HasShadow="False" CornerRadius="10">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Entry x:Name="NicknameEntry" Text="{Binding Nickname}" Placeholder="nickname"   
                            PlaceholderColor="White" HeightRequest="40"   
@@ -16,7 +16,7 @@
                 </StackLayout>
             </Frame>
 
-            <Frame BackgroundColor="Firebrick" HasShadow="False">
+            <Frame BackgroundColor="Firebrick" HasShadow="False" CornerRadius="10">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Picker ItemsSource="{Binding ServerOptions}" 
                             Title="Server" 
@@ -28,7 +28,7 @@
 
             <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="Firebrick" />
+                    BackgroundColor="Firebrick" CornerRadius="10" />
 
         </StackLayout>
     </ContentPage.Content>

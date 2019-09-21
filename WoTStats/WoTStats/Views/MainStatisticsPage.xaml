@@ -25,107 +25,89 @@
         </Style>
     </ContentPage.Resources>
 
-    <Grid VerticalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Image Source="wotbackground.jpg"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/> 
-        <!--<StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Start" VerticalOptions="Start" Margin="20,50">
-            --><!--<ImageButton Source="menu.png" WidthRequest="23" HeightRequest="15" HorizontalOptions="Start" VerticalOptions="Center" />-->
-            <!--<Label Text="LONDON, GB" FontSize="16" VerticalOptions="Center" TextColor="White"/>--><!--
-        </StackLayout>-->
+    <StackLayout Padding="5,0">
+        <Frame HasShadow="True" CornerRadius="10" Margin="10,15,10,10" Padding="5" BackgroundColor="DimGray"
+               HorizontalOptions="Fill" VerticalOptions="Start">
+            <Label Text="{Binding Nickname}" TextColor="White"  
+                       FontSize="22" FontAttributes="Bold" 
+                       VerticalOptions="Center" HorizontalOptions="Center"/>
+        </Frame>
+        <ScrollView Margin="0" Padding="0,5" Orientation="Vertical">
+            <Frame HasShadow="True" CornerRadius="10" Margin="10" Padding="5" BackgroundColor="DimGray">
+                <Grid VerticalOptions="FillAndExpand">
 
-        <Grid VerticalOptions="FillAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-            <Frame Grid.Column="1" HasShadow="True" CornerRadius="10" Margin="0,10,0,110" Padding="5,5,5,5" 
-                   Opacity="0.5"
-                   HorizontalOptions="Center" VerticalOptions="Start">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                    <Label Text="{Binding Nickname}" TextColor="Black" 
-                           FontSize="22" FontAttributes="Bold" 
-                           VerticalOptions="Center" HorizontalOptions="Center"/>
-                </StackLayout>
-            </Frame>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-        </Grid>
-
-        <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Frame HasShadow="True" CornerRadius="10" Margin="10,5,5,5" Padding="5,5,5,5" HeightRequest="60" VerticalOptions="Start">
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="{Binding Battles}" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Battles" TextColor="#7D7D7D" FontSize="12" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
-                </StackLayout>
+                    <Frame Grid.Row="0" Grid.Column="0" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Battles}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="Battles" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding MaxFrags}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="Max Frags" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="0" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding HitRatio}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="HitRatio" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="4" Grid.Column="0" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding MaxDamage}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="Max Damage" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" Grid.Column="0" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding AvgExperience}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="Average Exp." TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" Grid.Column="1" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding WinRate}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="WinRate" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" CornerRadius="10" Margin="5,5,5,5"  HeightRequest="60" 
+                           VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding AvgExperience}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="Average Exp." TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
             </Frame>
-            <Frame Grid.Column="1" HasShadow="True" CornerRadius="10" Margin="5,5,5,5" Padding="5,5,5,5" HeightRequest="60" VerticalOptions="Start">
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="{Binding MaxFrags}" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Max Frags" TextColor="#7D7D7D" FontSize="12" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-            <Frame Grid.Column="2" HasShadow="True" CornerRadius="10" Margin="5,5,5,5" Padding="5,5,5,5" HeightRequest="60" VerticalOptions="Start">
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="{Binding MaxDamage}" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Max Damage" TextColor="#7D7D7D" FontSize="12" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-            <Frame Grid.Column="3" HasShadow="True" CornerRadius="10" Margin="5,5,10,5" Padding="5,5,5,5" HeightRequest="60" VerticalOptions="Start">
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="{Binding AvgExperience}" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Average Exp." TextColor="#7D7D7D" FontSize="12" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </Grid>
-        <!--<StackLayout Grid.Row="2" BackgroundColor="Transparent" Orientation="Horizontal" Margin="20" HorizontalOptions="End">
-            <ImageButton x:Name="ListBtn" Source="listColor.png" WidthRequest="15" HeightRequest="15" />
-            <ImageButton x:Name="GridBtn" Source="grid.png" WidthRequest="15" HeightRequest="15"/>
-        </StackLayout>
-        <ListView x:Name="WeatherForecastList" ItemsSource="{Binding Weathers}" SeparatorVisibility="None"
-                  Grid.Row="3" Margin="20,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <ListView.ItemTemplate>
-                <DataTemplate >
-                    <ViewCell>
-                        <Frame BackgroundColor="White" BorderColor="#F0F0F0" Padding="5" Margin="0,0,0,5" HasShadow="False">
-                            <Grid HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Date}" TextColor="#757575" FontSize="12" VerticalOptions="Center" Margin="20,0"/>
-                                <Image Grid.Column="1" Source="{Binding Icon}" WidthRequest="38" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
-                                    <Label Text="{Binding Temp}" TextColor="Black" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
-                                    <Label Text="°C" TextColor="Black" FontSize="15" VerticalOptions="Center"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
-    </Grid>
-
+        </ScrollView>
+    </StackLayout>
 
 </ContentPage>

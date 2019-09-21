@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using WoTStats.Models.DatabaseModels;
+using WoTStats.Models.DataTemplates;
 using WoTStats.Models.RestModels.WoT.PlayerPersonalData;
 using WoTStats.Services;
 using WoTStats.Services.RestServices.WoT;
-using WoTStats.ViewModels.DataTemplates;
 
 namespace WoTStats
 {
@@ -25,15 +25,7 @@ namespace WoTStats
 
         protected virtual void OnDataPrepared()
         {
-            // DataPrepared?.Invoke(this, EventArgs.Empty);
-            if (DataPrepared != null)
-            {
-                DataPrepared.Invoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                Debug.WriteLine("\n\n ZERO SUBS\n\n");
-            }
+            DataPrepared?.Invoke(this, EventArgs.Empty);
         }
 
         public ContentManager()
@@ -57,7 +49,7 @@ namespace WoTStats
         private void PrepareTanksData()
         {
             var dataProvider = new VisibleTanksDataProvider();
-            this.TanksVisibleDataTask = dataProvider.GetTanksVisibleDataAsync();
+            this.TanksVisibleDataTask = dataProvider.GetTanksVisibleDataAsync(accountId, server);
         }
 
         public async Task<PlayerPersonalData> GetPlayerPersonalDataAsync()

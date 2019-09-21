@@ -4,11 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels.WoT.PlayerVehicleStatistics;
 using WoTStats.Models.RestModels.XVM;
 using WoTStats.Services.RestServices.WoT;
 using WoTStats.Services.RestServices.XVM;
-using WoTStats.ViewModels.DataTemplates;
+using WoTStats.Models.DataTemplates;
 
 namespace WoTStats.Services
 {
@@ -22,23 +23,19 @@ namespace WoTStats.Services
             referencialWN8Data = null;
         }
 
-        public async Task<List<TankVisibleData>> GetTanksVisibleDataAsync()
+        public async Task<List<TankVisibleData>> GetTanksVisibleDataAsync(string accountId, WoTServer server)
         {
             var statisticsRestService = new PlayerVehiclesStatisticsRestService();
 
             var tankopediaRestService = new TankopediaVehicleRestService();
 
-            var users = await App.Database.GetUsersAsync();
-
-            var user = users[0];
-
-            var vehiclesStatistics = await statisticsRestService.GetPlayerVehiclesStatisticsAsync(user.AccountId, user.WoTServer);
+            var vehiclesStatistics = await statisticsRestService.GetPlayerVehiclesStatisticsAsync(accountId, server);
 
             var tanksData = new List<TankVisibleData>();
 
             foreach (var stat in vehiclesStatistics)
             {
-                var vehicle = await tankopediaRestService.GetTankopediaVehicleAsync(stat.tank_id, user.WoTServer);
+                var vehicle = await tankopediaRestService.GetTankopediaVehicleAsync(stat.tank_id, server);
 
                 if (vehicle != null)
                 {
@@ -51,7 +48,6 @@ namespace WoTStats.Services
                         Battles = stat.all.battles.ToString(),
                         WinRate = ((double)stat.all.wins / stat.all.battles).ToString("F", CultureInfo.InvariantCulture),
                         WN8 = "WN8 = " + wn8.ToString("F", CultureInfo.InvariantCulture),
-                        //ImageUrl = vehicle.images.small_icon.Trim('"')
                     });
                 }
             }

@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels.WoT.PlayerVehicleStatistics;
-using WoTStats.Models.RestModels.WoT.TankopediaVehicle;
-using WoTStats.Services;
-using WoTStats.Services.RestServices.WoT;
-using WoTStats.ViewModels.DataTemplates;
+using WoTStats.Models.DataTemplates;
 
 namespace WoTStats.ViewModels
 {
