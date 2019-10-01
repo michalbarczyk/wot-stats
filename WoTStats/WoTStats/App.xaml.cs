@@ -21,7 +21,7 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users07.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users10.db3")));
             }
         }
 
@@ -35,15 +35,17 @@ namespace WoTStats
         {
             InitializeComponent();
 
-            if (Database.GetUsersQuantity() == 0)
-            {
-                MainPage = new LoginPage();
-            }
-            else
-            {
-                ContentManager = new ContentManager();
-                MainPage = new AppShell();
-            }
+            MainPage = new AuthPage();
+
+            //if (Database.GetUsersQuantity() == 0)
+            //{
+            //    MainPage = new LoginPage();
+            //}
+            //else
+            //{
+            //    ContentManager = new ContentManager();
+            //    MainPage = new AppShell();
+            //}
         }
 
         protected override void OnStart()

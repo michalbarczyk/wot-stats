@@ -6,11 +6,12 @@ using System.Windows.Input;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels.WoT.PlayerBasicInfo;
 using WoTStats.Services.RestServices.WoT;
+using WoTStats.Views;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public class AuthViewModel : BaseViewModel
     {
         public Action<string> DisplayInvalidLoginPrompt;
         
@@ -40,7 +41,7 @@ namespace WoTStats.ViewModels
         public IList<WoTServer> ServerOptions { set; get; }
 
         public ICommand SubmitCommand { protected set; get; }
-        public LoginViewModel()
+        public AuthViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
             ServerOptions = new List<WoTServer>(new WoTServer[]
@@ -75,19 +76,29 @@ namespace WoTStats.ViewModels
                 
                 await App.Database.InsertUserAsync(user);
 
-                App.ContentManager = new ContentManager();
-                GoToMainShellAsync();
+                PrepareAndGoToMainShellAsync();
             }
             else
             {
                 DisplayInvalidLoginPrompt(playerBasicInfo.Meta.Count.ToString());
-                
             }
             
         }
 
-        private async void GoToMainShellAsync()
+        public void OnAppearing()
         {
+           
+            if (App.Database.GetUsersQuantity() > 0 && Application.Current.MainPage is AuthPage)
+            {
+                PrepareAndGoToMainShellAsync();
+            }
+
+            // else new user to be authenticated 
+        }
+
+        private async void PrepareAndGoToMainShellAsync()
+        {
+            App.ContentManager = new ContentManager();
             Application.Current.MainPage = new AppShell();
             await Shell.Current.GoToAsync("//main");
         }
