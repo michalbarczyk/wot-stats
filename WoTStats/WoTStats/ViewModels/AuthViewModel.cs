@@ -87,7 +87,6 @@ namespace WoTStats.ViewModels
 
         public void OnAppearing()
         {
-           
             if (App.Database.GetUsersQuantity() > 0 && Application.Current.MainPage is AuthPage)
             {
                 PrepareAndGoToMainShellAsync();

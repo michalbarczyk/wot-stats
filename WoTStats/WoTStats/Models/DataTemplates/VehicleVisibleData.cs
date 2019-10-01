@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WoTStats.Models.DataTemplates
 {
-    public class TankVisibleData
+    public class VehicleVisibleData
     {
         public string Name { get; set; }
         public string WinRate { get; set; }

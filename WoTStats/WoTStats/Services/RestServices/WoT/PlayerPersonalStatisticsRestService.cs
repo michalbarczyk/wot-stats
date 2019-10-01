@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WoTStats.Models.DatabaseModels;
-using WoTStats.Models.RestModels.WoT.PlayerPersonalData;
+using WoTStats.Models.RestModels.WoT.PlayerPersonalStatistics;
 
 namespace WoTStats.Services.RestServices.WoT
 {
-    class PlayerPersonalDataRestService : BaseRestService
+    class PlayerPersonalStatisticsRestService : BaseRestService
     {
-        public PlayerPersonalDataRestService()
+        public PlayerPersonalStatisticsRestService()
         {
             base.BareUrlSpecificPart = $"/account/info/?application_id={Const.WOT_API_APPLICATION_ID}&account_id=";
         }
 
-        public async Task<PlayerPersonalData> GetPlayerPersonalDataAsync(string accountId, WoTServer server)
+        public async Task<PlayerPersonalStatistics> GetPlayerPersonalStatisticsAsync(string accountId, WoTServer server)
         {
-            PlayerPersonalData playerPersonalData = null;
+            PlayerPersonalStatistics playerPersonalStatistics = null;
 
             var fullUrl = GetFullUrl(accountId, server);
 
@@ -43,7 +43,7 @@ namespace WoTStats.Services.RestServices.WoT
                         MissingMemberHandling = MissingMemberHandling.Ignore
                     };
                     
-                    playerPersonalData = JsonConvert.DeserializeObject<PlayerPersonalData>(playerPersonalDataJToken.ToString(), settings);
+                    playerPersonalStatistics = JsonConvert.DeserializeObject<PlayerPersonalStatistics>(playerPersonalDataJToken.ToString(), settings);
                 }
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace WoTStats.Services.RestServices.WoT
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
 
-            return playerPersonalData;
+            return playerPersonalStatistics;
         }
 
         private string GetFullUrl(string accountId, WoTServer server)

@@ -21,7 +21,7 @@ namespace WoTStats
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("login", typeof(AuthPage));
+            Routing.RegisterRoute("auth", typeof(AuthPage));
 
 
         }

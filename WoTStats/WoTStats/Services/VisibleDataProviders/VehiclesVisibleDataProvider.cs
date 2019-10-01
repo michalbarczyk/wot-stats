@@ -11,19 +11,19 @@ using WoTStats.Services.RestServices.WoT;
 using WoTStats.Services.RestServices.XVM;
 using WoTStats.Models.DataTemplates;
 
-namespace WoTStats.Services
+namespace WoTStats.Services.VisibleDataProviders
 {
-    class VisibleTanksDataProvider
+    class VehiclesVisibleDataProvider
     {
 
         private ReferencialWN8Data referencialWN8Data;
 
-        public VisibleTanksDataProvider()
+        public VehiclesVisibleDataProvider()
         {
             referencialWN8Data = null;
         }
 
-        public async Task<List<TankVisibleData>> GetTanksVisibleDataAsync(string accountId, WoTServer server)
+        public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync(string accountId, WoTServer server)
         {
             var statisticsRestService = new PlayerVehiclesStatisticsRestService();
 
@@ -31,7 +31,7 @@ namespace WoTStats.Services
 
             var vehiclesStatistics = await statisticsRestService.GetPlayerVehiclesStatisticsAsync(accountId, server);
 
-            var tanksData = new List<TankVisibleData>();
+            var tanksData = new List<VehicleVisibleData>();
 
             foreach (var stat in vehiclesStatistics)
             {
@@ -41,7 +41,7 @@ namespace WoTStats.Services
                 {
                     double wn8 = await GetTankWN8(stat);
 
-                    tanksData.Add(new TankVisibleData
+                    tanksData.Add(new VehicleVisibleData
                     {
                         Name = vehicle.name,
                         AvgDamage = ((double)stat.all.damage_dealt / stat.all.battles).ToString("F", CultureInfo.InvariantCulture),

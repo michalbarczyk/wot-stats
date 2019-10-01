@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
 {
-    public class MainStatisticsViewModel : BaseViewModel
+    public class PersonalStatisticsViewModel : BaseViewModel
     {
         private string nickname;
         private string battles;
@@ -121,64 +121,43 @@ namespace WoTStats.ViewModels
             }
         }
 
-        public MainStatisticsViewModel()
+        public string WN8
+        {
+            get
+            {
+                return wn8;
+            }
+            set
+            {
+                wn8 = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public PersonalStatisticsViewModel()
         {
             //App.ContentManager.DataPrepared += OnDataPrepared;
             //App.ContentManager.PrepareData();
         }
 
-        /*private void OnDataPrepared(object source, EventArgs args)
+        private void OnDataPrepared(object source, EventArgs args)
         {
-            Debug.WriteLine("\n\n OnDataPrepared execution started\n\n");
-
-            var statsAll = App.ContentManager.PlayerPersonalData.statistics.all; //playerPersonalData.statistics.all;
-
-            //GetData = new Command(Cmd);
-            Battles = statsAll.battles.ToString();
-            MaxDamage = statsAll.max_damage.ToString();
-            MaxFrags = statsAll.max_frags.ToString();
-            AvgExperience = statsAll.battle_avg_xp.ToString();
-
-            OnPropertyChanged("Battles");
-            OnPropertyChanged("MaxDamage");
-            OnPropertyChanged("AvgExperience");
-            OnPropertyChanged("MaxFrags");
-            OnPropertyChanged("Nickname");
-
-            ExampleWN8 = "example ScorpionG WN8 = " + new CalculatorWN8
-            {
-                AverageDamage = 1272.46,
-                AverageSpot = 0.487,
-                AverageFrag = 0.778,
-                AverageDefense = 0.379,
-                WinRate = 0.48276,
-                ExpectedDamage = 1432,
-                ExpectedSpot = 0.558,
-                ExpectedFrag = 0.995,
-                ExpectedDefense = 0.627,
-                ExpectedWinRate = 0.511
-            }.GetWN8Value();
-
-            OnPropertyChanged("ExampleWN8");
-        }*/
+            
+        }
 
         public async void OnAppearing()
         {
-            // TODO visible data providers for all viewModels
+            var visibleData = await App.ContentManager.GetPersonalVisibleDataAsync();
 
-            var playerPersonalData = await App.ContentManager.GetPlayerPersonalDataAsync();
-
-            Nickname = App.ContentManager.Nickname;
-
-            var statsAll = playerPersonalData.statistics.all;
-
-            Battles = statsAll.battles.ToString("D", CultureInfo.InvariantCulture);
-            MaxDamage = statsAll.max_damage.ToString("D", CultureInfo.InvariantCulture);
-            MaxFrags = statsAll.max_frags.ToString("D", CultureInfo.InvariantCulture);
-            AvgExperience = statsAll.battle_avg_xp.ToString();
-            WinRate = ((double) statsAll.wins / statsAll.battles).ToString("P", CultureInfo.InvariantCulture);
-            HitRatio = ((double)statsAll.hits / statsAll.shots).ToString("P", CultureInfo.InvariantCulture);
-            PersonalRating = playerPersonalData.global_rating.ToString("D", CultureInfo.InvariantCulture);
+            Nickname = visibleData.Nickname;
+            Battles = visibleData.Battles;
+            MaxDamage = visibleData.MaxDamage;
+            MaxFrags = visibleData.MaxFrags;
+            AvgExperience = visibleData.AvgExperience;
+            HitRatio = visibleData.HitRatio;
+            WinRate = visibleData.WinRate;
+            PersonalRating = visibleData.PersonalRating;
+            WN8 = "[wn8]";
         }
     }
 }

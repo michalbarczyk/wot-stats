@@ -29,7 +29,7 @@
 
     <ShellItem Route="main" Title="Personal Data">
         <Tab Title="Personal" Route="personal" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate views:MainStatisticsPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate views:PersonalStatisticsPage}"/>
         </Tab>
 
         <Tab Title="Tanks" Route="tanks" Icon="tab_about.png">

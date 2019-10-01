@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WoTStats.Views.MainStatisticsPage"
+             x:Class="WoTStats.Views.PersonalStatisticsPage"
              Title="Main Statistics">
 
     <ContentPage.Resources>
@@ -18,11 +18,17 @@
                                 <Setter Property="BackgroundColor" 
                                         Value="#039BE6" />
                             </VisualState.Setters>
+
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateGroupList>
             </Setter>
         </Style>
+
+        <!--<Style x:Key="label_style" TargetType="Label">
+            <Setter Property="Font" Value = "Courier New, Bold, 7" />
+        </Style>-->
+
     </ContentPage.Resources>
 
     <ScrollView Orientation="Vertical">
@@ -99,9 +105,17 @@
                 <Frame Grid.Row="3" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                     <StackLayout  HorizontalOptions="CenterAndExpand">
-                        <Label Text="{Binding AvgExperience}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <Label Text="{Binding PersonalRating}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                        <Label Text="Average Exp." TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        <Label Text="Personal Rating" TextColor="#7D7D7D"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
+                       VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <StackLayout  HorizontalOptions="CenterAndExpand">
+                        <Label Text="{Binding WN8}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="WN8" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
                     </StackLayout>
                 </Frame>
             </Grid>

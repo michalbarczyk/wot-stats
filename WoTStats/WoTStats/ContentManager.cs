@@ -5,9 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.DataTemplates;
-using WoTStats.Models.RestModels.WoT.PlayerPersonalData;
-using WoTStats.Services;
-using WoTStats.Services.RestServices.WoT;
+using WoTStats.Services.VisibleDataProviders;
 
 namespace WoTStats
 {
@@ -16,8 +14,8 @@ namespace WoTStats
         private readonly WoTServer server;
         private readonly string accountId;
         public string Nickname { get; }
-        public Task<PlayerPersonalData> PlayerPersonalDataTask { get; set; }
-        public Task<List<TankVisibleData>> TanksVisibleDataTask { get; set; }
+        private Task<PersonalVisibleData> PersonalVisibleDataTask { get; set; }
+        private Task<List<VehicleVisibleData>> VehiclesVisibleDataTask { get; set; }
 
         public delegate void DataPreparedEventHandler(object source, EventArgs args);
 
@@ -36,32 +34,30 @@ namespace WoTStats
             this.server = user.WoTServer;
             this.Nickname = user.Nickname;
 
-            Task.Run(() => PreparePersonalData());
-            Task.Run(() => PrepareTanksData());
+            PreparePersonalData();
+            PrepareVehiclesData();
         }
 
         private void PreparePersonalData()
         {
-            var dataProvider = new PlayerPersonalDataRestService();
-            this.PlayerPersonalDataTask = dataProvider.GetPlayerPersonalDataAsync(accountId, server);
+            var dataProvider = new PersonalVisibleDataProvider();
+            this.PersonalVisibleDataTask = dataProvider.GetPersonalVisibleDataAsync(accountId, server);
         }
 
-        private void PrepareTanksData()
+        private void PrepareVehiclesData()
         {
-            var dataProvider = new VisibleTanksDataProvider();
-            this.TanksVisibleDataTask = dataProvider.GetTanksVisibleDataAsync(accountId, server);
+            var dataProvider = new VehiclesVisibleDataProvider();
+            this.VehiclesVisibleDataTask = dataProvider.GetVehiclesVisibleDataAsync(accountId, server);
         }
 
-        public async Task<PlayerPersonalData> GetPlayerPersonalDataAsync()
+        public async Task<PersonalVisibleData> GetPersonalVisibleDataAsync()
         {
-            var result = await this.PlayerPersonalDataTask;
-            return result;
+            return await this.PersonalVisibleDataTask;
         }
 
-        public async Task<List<TankVisibleData>> GetTanksVisibleDataAsync()
+        public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync()
         {
-            var result = await this.TanksVisibleDataTask;
-            return result;
+            return await this.VehiclesVisibleDataTask;
         }
 
     }

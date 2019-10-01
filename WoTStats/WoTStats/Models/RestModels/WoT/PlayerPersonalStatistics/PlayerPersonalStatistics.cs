@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WoTStats.Models.RestModels.WoT.PlayerPersonalData
+namespace WoTStats.Models.RestModels.WoT.PlayerPersonalStatistics
 {
-    public class PlayerPersonalData
+    public class PlayerPersonalStatistics
     {
         public string client_language { get; set; }
         public int last_battle_time { get; set; }

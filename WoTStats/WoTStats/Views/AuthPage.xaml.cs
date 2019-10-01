@@ -18,7 +18,8 @@ namespace WoTStats.Views
         public AuthPage()
         {
             BindingContext = viewModel = new AuthViewModel();
-            viewModel.DisplayInvalidLoginPrompt += (string s) => DisplayAlert($"Invalid login: {s} matching nicknames", "Type correct login", "OK");
+            viewModel.DisplayInvalidLoginPrompt += 
+                (string response) => DisplayAlert($"Invalid login: {response} matching nicknames", "Type correct login", "OK");
             InitializeComponent();
         }
 

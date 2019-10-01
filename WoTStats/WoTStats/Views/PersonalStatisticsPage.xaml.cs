@@ -13,12 +13,12 @@ using Xamarin.Forms.Xaml;
 namespace WoTStats.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainStatisticsPage : ContentPage
+    public partial class PersonalStatisticsPage : ContentPage
     {
-        private MainStatisticsViewModel viewModel;
-        public MainStatisticsPage()
+        private PersonalStatisticsViewModel viewModel;
+        public PersonalStatisticsPage()
         {
-            BindingContext = viewModel = new MainStatisticsViewModel();
+            BindingContext = viewModel = new PersonalStatisticsViewModel();
             InitializeComponent();
         }
 

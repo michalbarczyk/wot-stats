@@ -36,16 +36,6 @@ namespace WoTStats
             InitializeComponent();
 
             MainPage = new AuthPage();
-
-            //if (Database.GetUsersQuantity() == 0)
-            //{
-            //    MainPage = new LoginPage();
-            //}
-            //else
-            //{
-            //    ContentManager = new ContentManager();
-            //    MainPage = new AppShell();
-            //}
         }
 
         protected override void OnStart()

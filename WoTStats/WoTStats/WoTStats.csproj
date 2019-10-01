@@ -26,8 +26,8 @@
     <Compile Update="Views\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MainStatisticsPage.xaml.cs">
-      <DependentUpon>MainStatisticsPage.xaml</DependentUpon>
+    <Compile Update="Views\PersonalStatisticsPage.xaml.cs">
+      <DependentUpon>PersonalStatisticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\RecommendationsPage.xaml.cs">
       <DependentUpon>RecommendationsPage.xaml</DependentUpon>
@@ -41,7 +41,7 @@
     <EmbeddedResource Update="Views\AuthPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainStatisticsPage.xaml">
+    <EmbeddedResource Update="Views\PersonalStatisticsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RecommendationsPage.xaml">

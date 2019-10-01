@@ -9,31 +9,17 @@ namespace WoTStats.ViewModels
 {
     class SettingsViewModel : BaseViewModel
     {
-        private string referWN;
+       
         public ICommand LogoutCommand { protected set; get; }
-
-        public string ReferWN
-        {
-            get { return referWN; }
-            set
-            {
-                referWN = value;
-                OnPropertyChanged();
-            }
-        }
 
         public SettingsViewModel()
         {
-            LogoutCommand = new Command(async () => await Shell.Current.GoToAsync("login"));
+            LogoutCommand = new Command(async () => await Shell.Current.GoToAsync("auth"));
         }
 
         public async void OnAppearing()
         {
-            var provider = new ReferentialWN8DataRestService();
-
-            var result = await provider.GetReferencialWN8DataAsync();
-
-            ReferWN = result.data[0].expWinRate.ToString();
+           
         }
     }
 }
