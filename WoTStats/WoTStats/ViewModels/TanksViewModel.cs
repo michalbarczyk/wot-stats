@@ -8,7 +8,6 @@ namespace WoTStats.ViewModels
     class TanksViewModel : BaseViewModel
     {
         private IList<VehicleVisibleData> tanksData;
-
         public IList<VehicleVisibleData> TanksData
         {
             set
@@ -19,9 +18,19 @@ namespace WoTStats.ViewModels
             get { return tanksData; }
         }
 
-        public async void OnAppearing()
+        public TanksViewModel()
         {
-            TanksData = await App.ContentManager.GetVehiclesVisibleDataAsync();
+            App.ContentManager.VehiclesVisibleDataCreated += OnVehiclesVisibleDataCreated;
+        }
+
+        private void OnVehiclesVisibleDataCreated(object source, EventArgs args)
+        {
+            TanksData = App.ContentManager.VehiclesVisibleData;
+        }
+
+        public void OnAppearing()
+        {
+            App.ContentManager.CreateVehiclesVisibleData();
 
 
             // TODO tanks -> vehicles

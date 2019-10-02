@@ -13,17 +13,34 @@ namespace WoTStats
     {
         private readonly WoTServer server;
         private readonly string accountId;
-        public string Nickname { get; }
-        private Task<PersonalVisibleData> PersonalVisibleDataTask { get; set; }
-        private Task<List<VehicleVisibleData>> VehiclesVisibleDataTask { get; set; }
+        private Task<PersonalVisibleData> personalVisibleDataTask;
+        private Task<List<VehicleVisibleData>> vehiclesVisibleDataTask;
 
-        public delegate void DataPreparedEventHandler(object source, EventArgs args);
+        public string Nickname { get; set; }
 
-        public event DataPreparedEventHandler DataPrepared;
 
-        protected virtual void OnDataPrepared()
+        public PersonalVisibleData PersonalVisibleData { get; set; }
+
+        public delegate void PersonalVisibleDataCreatedEventHandler(object source, EventArgs args);
+
+        public event PersonalVisibleDataCreatedEventHandler PersonalVisibleDataCreated;
+
+
+        public IList<VehicleVisibleData> VehiclesVisibleData { get; set; }
+
+        public delegate void VehiclesVisibleDataCreatedEventHandler(object source, EventArgs args);
+
+        public event VehiclesVisibleDataCreatedEventHandler VehiclesVisibleDataCreated;
+
+
+        protected virtual void OnPersonalVisibleDataCreated()
         {
-            DataPrepared?.Invoke(this, EventArgs.Empty);
+            PersonalVisibleDataCreated?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual void OnVehiclesVisibleDataCreated()
+        {
+            VehiclesVisibleDataCreated?.Invoke(this, EventArgs.Empty);
         }
 
         public ContentManager()
@@ -41,23 +58,30 @@ namespace WoTStats
         private void PreparePersonalData()
         {
             var dataProvider = new PersonalVisibleDataProvider();
-            this.PersonalVisibleDataTask = dataProvider.GetPersonalVisibleDataAsync(accountId, server);
+            this.personalVisibleDataTask = dataProvider.GetPersonalVisibleDataAsync(accountId, server);
         }
 
         private void PrepareVehiclesData()
         {
             var dataProvider = new VehiclesVisibleDataProvider();
-            this.VehiclesVisibleDataTask = dataProvider.GetVehiclesVisibleDataAsync(accountId, server);
+            this.vehiclesVisibleDataTask = dataProvider.GetVehiclesVisibleDataAsync(accountId, server);
         }
 
-        public async Task<PersonalVisibleData> GetPersonalVisibleDataAsync()
+        public async void CreatePersonalVisibleData()
         {
-            return await this.PersonalVisibleDataTask;
+            PersonalVisibleData = await this.personalVisibleDataTask;
+            OnPersonalVisibleDataCreated();
+        }
+
+        public async void CreateVehiclesVisibleData()
+        {
+            VehiclesVisibleData = await this.vehiclesVisibleDataTask;
+            OnVehiclesVisibleDataCreated();
         }
 
         public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync()
         {
-            return await this.VehiclesVisibleDataTask;
+            return await this.vehiclesVisibleDataTask;
         }
 
     }

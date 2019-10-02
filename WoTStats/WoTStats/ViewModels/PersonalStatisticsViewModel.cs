@@ -136,18 +136,12 @@ namespace WoTStats.ViewModels
 
         public PersonalStatisticsViewModel()
         {
-            //App.ContentManager.DataPrepared += OnDataPrepared;
-            //App.ContentManager.PrepareData();
+            App.ContentManager.PersonalVisibleDataCreated += OnPersonalVisibleDataCreated;
         }
 
-        private void OnDataPrepared(object source, EventArgs args)
+        private void OnPersonalVisibleDataCreated(object source, EventArgs args)
         {
-            
-        }
-
-        public async void OnAppearing()
-        {
-            var visibleData = await App.ContentManager.GetPersonalVisibleDataAsync();
+            var visibleData = App.ContentManager.PersonalVisibleData;
 
             Nickname = visibleData.Nickname;
             Battles = visibleData.Battles;
@@ -158,6 +152,23 @@ namespace WoTStats.ViewModels
             WinRate = visibleData.WinRate;
             PersonalRating = visibleData.PersonalRating;
             WN8 = "[wn8]";
+        }
+
+        public async void OnAppearing()
+        {
+            //var visibleData = await App.ContentManager.
+
+            //Nickname = visibleData.Nickname;
+            //Battles = visibleData.Battles;
+            //MaxDamage = visibleData.MaxDamage;
+            //MaxFrags = visibleData.MaxFrags;
+            //AvgExperience = visibleData.AvgExperience;
+            //HitRatio = visibleData.HitRatio;
+            //WinRate = visibleData.WinRate;
+            //PersonalRating = visibleData.PersonalRating;
+            //WN8 = "[wn8]";
+
+            App.ContentManager.CreatePersonalVisibleData();
         }
     }
 }
