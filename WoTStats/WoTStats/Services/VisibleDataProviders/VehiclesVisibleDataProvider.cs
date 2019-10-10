@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -47,11 +48,11 @@ namespace WoTStats.Services.VisibleDataProviders
                         AvgDamage = ((double)stat.all.damage_dealt / stat.all.battles).ToString("F", CultureInfo.InvariantCulture),
                         Battles = stat.all.battles.ToString(),
                         WinRate = ((double)stat.all.wins / stat.all.battles).ToString("F", CultureInfo.InvariantCulture),
-                        WN8 = "WN8 = " + wn8.ToString("F", CultureInfo.InvariantCulture),
+                        WN8 = wn8.ToString("F", CultureInfo.InvariantCulture),
                     });
                 }
             }
-
+            
             return tanksData;
         }
 
@@ -66,7 +67,6 @@ namespace WoTStats.Services.VisibleDataProviders
             var tankReferentialData = referencialWN8Data.data
                 .Where(data => data.IDNum == Int32.Parse(vehicleStats.tank_id))
                 .FirstOrDefault();
-
 
             var wn8calc = new CalculatorWN8
             {

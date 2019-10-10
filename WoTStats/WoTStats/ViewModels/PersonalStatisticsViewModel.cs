@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Input;
 using WoTStats.Services;
 using WoTStats.Services.RestServices.WoT;
 using Xamarin.Forms;
@@ -18,8 +19,6 @@ namespace WoTStats.ViewModels
         private string winRate;
         private string personalRating;
         private string wn8;
-
-
 
         public string Nickname
         {
@@ -134,12 +133,16 @@ namespace WoTStats.ViewModels
             }
         }
 
+        public ICommand RefreshCommand { protected set; get; }
+
         public PersonalStatisticsViewModel()
         {
-            App.ContentManager.PersonalVisibleDataCreated += OnPersonalVisibleDataCreated;
+            // RefreshCommand = new Command(async () => await Shell.Current.GoToAsync("auth"));
+            App.ContentManager.PersonalVisibleDataChanged += OnPersonalVisibleDataChanged;
+            
         }
 
-        private void OnPersonalVisibleDataCreated(object source, EventArgs args)
+        private void OnPersonalVisibleDataChanged(object source, EventArgs args)
         {
             var visibleData = App.ContentManager.PersonalVisibleData;
 
@@ -151,23 +154,14 @@ namespace WoTStats.ViewModels
             HitRatio = visibleData.HitRatio;
             WinRate = visibleData.WinRate;
             PersonalRating = visibleData.PersonalRating;
-            WN8 = "[wn8]";
+            WN8 = visibleData.WN8;
         }
 
-        public async void OnAppearing()
+        // TODO private bool dataProvided;
+
+        public void OnAppearing()
         {
-            //var visibleData = await App.ContentManager.
-
-            //Nickname = visibleData.Nickname;
-            //Battles = visibleData.Battles;
-            //MaxDamage = visibleData.MaxDamage;
-            //MaxFrags = visibleData.MaxFrags;
-            //AvgExperience = visibleData.AvgExperience;
-            //HitRatio = visibleData.HitRatio;
-            //WinRate = visibleData.WinRate;
-            //PersonalRating = visibleData.PersonalRating;
-            //WN8 = "[wn8]";
-
+           
             App.ContentManager.CreatePersonalVisibleData();
         }
     }

@@ -11,36 +11,35 @@ namespace WoTStats
 {
     public class ContentManager
     {
-        private readonly WoTServer server;
-        private readonly string accountId;
+        public readonly WoTServer server;
+        public readonly string accountId;
         private Task<PersonalVisibleData> personalVisibleDataTask;
         private Task<List<VehicleVisibleData>> vehiclesVisibleDataTask;
 
         public string Nickname { get; set; }
 
-
         public PersonalVisibleData PersonalVisibleData { get; set; }
 
-        public delegate void PersonalVisibleDataCreatedEventHandler(object source, EventArgs args);
+        public delegate void PersonalVisibleDataChangedEventHandler(object source, EventArgs args);
 
-        public event PersonalVisibleDataCreatedEventHandler PersonalVisibleDataCreated;
+        public event PersonalVisibleDataChangedEventHandler PersonalVisibleDataChanged;
 
 
         public IList<VehicleVisibleData> VehiclesVisibleData { get; set; }
 
-        public delegate void VehiclesVisibleDataCreatedEventHandler(object source, EventArgs args);
+        public delegate void VehiclesVisibleDataChangedEventHandler(object source, EventArgs args);
 
-        public event VehiclesVisibleDataCreatedEventHandler VehiclesVisibleDataCreated;
+        public event VehiclesVisibleDataChangedEventHandler VehiclesVisibleDataChanged;
 
 
-        protected virtual void OnPersonalVisibleDataCreated()
+        protected virtual void OnPersonalVisibleDataChanged()
         {
-            PersonalVisibleDataCreated?.Invoke(this, EventArgs.Empty);
+            PersonalVisibleDataChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        protected virtual void OnVehiclesVisibleDataCreated()
+        protected virtual void OnVehiclesVisibleDataChanged()
         {
-            VehiclesVisibleDataCreated?.Invoke(this, EventArgs.Empty);
+            VehiclesVisibleDataChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public ContentManager()
@@ -50,9 +49,9 @@ namespace WoTStats
             this.accountId = user.AccountId;
             this.server = user.WoTServer;
             this.Nickname = user.Nickname;
-
-            PreparePersonalData();
             PrepareVehiclesData();
+            PreparePersonalData();
+            
         }
 
         private void PreparePersonalData()
@@ -70,19 +69,13 @@ namespace WoTStats
         public async void CreatePersonalVisibleData()
         {
             PersonalVisibleData = await this.personalVisibleDataTask;
-            OnPersonalVisibleDataCreated();
+            OnPersonalVisibleDataChanged();
         }
 
         public async void CreateVehiclesVisibleData()
         {
             VehiclesVisibleData = await this.vehiclesVisibleDataTask;
-            OnVehiclesVisibleDataCreated();
+            OnVehiclesVisibleDataChanged();
         }
-
-        public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync()
-        {
-            return await this.vehiclesVisibleDataTask;
-        }
-
     }
 }

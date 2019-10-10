@@ -14,5 +14,6 @@ namespace WoTStats.Models.DataTemplates
         public string AvgExperience { get; set; }
         public string WinRate { get; set; }
         public string PersonalRating { get; set; }
+        public string WN8 { get; set; }
     }
 }

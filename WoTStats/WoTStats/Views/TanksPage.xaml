@@ -5,13 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WoTStats.Views.TanksPage"
-             Title="Tanks">
+             Title="Tanks"
+             Shell.NavBarIsVisible="False" >
     <ContentPage.Content>
-        <CollectionView Margin="0,0,0,0"  ItemsSource="{Binding TanksData}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate >
-                    <ContentView Padding="15">
-                        <Frame HasShadow="True" CornerRadius="10" 
+        <Grid>
+            <ActivityIndicator Color="Gold" IsRunning="{Binding IsLoading}" />
+
+            <CollectionView Margin="0,0,0,0"  ItemsSource="{Binding TanksData}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <ContentView Padding="15">
+                            <!--<Frame HasShadow="True" CornerRadius="10" 
                                Margin="0,0,0,0" Padding="5,5,5,5" 
                                HeightRequest="60" VerticalOptions="Start" >
                             <Grid Padding="10">
@@ -51,11 +55,19 @@
                                             />
 
                             </Grid>
-                        </Frame>
-                    </ContentView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                        </Frame>-->
 
+                            <Frame HasShadow="True" CornerRadius="2" Margin="6,3,3,6" BackgroundColor="White" HeightRequest="120"
+                               HorizontalOptions="Fill" VerticalOptions="Start">
+                                <Label Text="{Binding Name}" TextColor="Black"  
+                                   FontSize="24" FontAttributes="Bold" 
+                                   VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

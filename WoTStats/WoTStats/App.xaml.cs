@@ -21,7 +21,7 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users10.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users11.db3")));
             }
         }
 
@@ -36,6 +36,9 @@ namespace WoTStats
             InitializeComponent();
 
             MainPage = new AuthPage();
+
+            // TODO AuthPage elimination -> authentication in one of registered shell pages
+                
         }
 
         protected override void OnStart()

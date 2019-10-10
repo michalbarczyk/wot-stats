@@ -45,7 +45,7 @@ namespace WoTStats.Services.RestServices.WoT
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("\tERROR {0}", ex.Message);
+                    Debug.WriteLine("\tERROR", ex.Message);
                 }
             }
 
@@ -65,7 +65,7 @@ namespace WoTStats.Services.RestServices.WoT
             }
             catch (NullReferenceException ex)
             {
-                Debug.WriteLine("\tERROR {0}", ex.Message);
+                Debug.WriteLine("\t[possible problem: no vehicle having selected tankId]", ex.Message);
                 return null;
             }
 

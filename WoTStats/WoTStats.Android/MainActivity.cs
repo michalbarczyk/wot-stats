@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace WoTStats.Droid
 {
-    [Activity(Label = "WoTStats", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "WoTStats", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -24,7 +24,7 @@ namespace WoTStats.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            /* ADDED */ Window.SetStatusBarColor(Android.Graphics.Color.Black);
+            /* ADDED */ Window.SetStatusBarColor(Android.Graphics.Color.Gray);
             LoadApplication(new App());
             
         }

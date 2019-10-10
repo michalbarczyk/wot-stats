@@ -17,9 +17,9 @@ namespace WoTStats.ViewModels
             LogoutCommand = new Command(async () => await Shell.Current.GoToAsync("auth"));
         }
 
-        public async void OnAppearing()
-        {
+        //public async void OnAppearing()
+        //{
            
-        }
+        //}
     }
 }

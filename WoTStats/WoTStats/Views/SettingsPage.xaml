@@ -8,9 +8,19 @@
              x:Class="WoTStats.Views.SettingsPage"
             Title="Settings" >
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}" />
+    
+
+    <ContentPage.ToolbarItems >
+        <!--<ToolbarItem Text="Logout"  Command="{Binding LogoutCommand}" />-->
     </ContentPage.ToolbarItems>
 
-    
+    <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+
+        <Button Command="{Binding LogoutCommand}" Text="Logout" TextColor="Black"  
+                FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                BackgroundColor="Gainsboro" CornerRadius="2" />
+
+    </StackLayout>
+
+
 </ContentPage>
