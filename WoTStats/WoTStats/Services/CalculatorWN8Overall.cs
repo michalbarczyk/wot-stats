@@ -29,7 +29,7 @@ namespace WoTStats.Services
 
             var vehicleStatsProvider = new PlayerVehiclesStatisticsRestService();
             var stats = await vehicleStatsProvider
-                .GetPlayerVehiclesStatisticsAsync(App.ContentManager.accountId, App.ContentManager.server);
+                .GetPlayerVehiclesStatisticsAsync(App.ContentManager.CurrentUser.AccountId, App.ContentManager.CurrentUser.WoTServer);
                 
 
             

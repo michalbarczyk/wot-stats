@@ -19,6 +19,8 @@ namespace WoTStats.ViewModels
 
         private WoTServer wotServer;
 
+
+
         public string Nickname
         {
             get { return nickname; }
@@ -54,6 +56,8 @@ namespace WoTStats.ViewModels
         }
         public async void OnSubmit()
         {
+
+            
             PlayerBasicInfoRestService apiService = new PlayerBasicInfoRestService();
             PlayerBasicInfo playerBasicInfo = await apiService.GetPlayerBasicInfoAsync(nickname, wotServer);
 
@@ -73,33 +77,21 @@ namespace WoTStats.ViewModels
                     await App.Database.DeleteUserAsync(userToBeDeleted);
                 }
 
-                
                 await App.Database.InsertUserAsync(user);
-
-                PrepareAndGoToMainShellAsync();
+                App.ContentManager.RefreshCurrentUser(user);
+                App.Current.MainPage = new AppShell();
+                await Shell.Current.GoToAsync("//main/personal");
             }
             else
             {
                 DisplayInvalidLoginPrompt(playerBasicInfo.Meta.Count.ToString());
             }
-            
+
         }
 
         public void OnAppearing()
         {
-            if (App.Database.GetUsersQuantity() > 0 && Application.Current.MainPage is AuthPage)
-            {
-                PrepareAndGoToMainShellAsync();
-            }
-
-            // else new user to be authenticated 
-        }
-
-        private async void PrepareAndGoToMainShellAsync()
-        {
-            App.ContentManager = new ContentManager();
-            Application.Current.MainPage = new AppShell();
-            await Shell.Current.GoToAsync("//main");
+            
         }
     }
 }

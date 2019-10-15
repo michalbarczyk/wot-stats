@@ -30,7 +30,7 @@ namespace WoTStats.Services.VisibleDataProviders
 
             var visibleData = new PersonalVisibleData
             {
-                Nickname = App.ContentManager.Nickname,
+                Nickname = App.ContentManager.CurrentUser.Nickname,
                 Battles = statsAll.battles.ToString("D", CultureInfo.InvariantCulture),
                 MaxDamage = statsAll.max_damage.ToString("D", CultureInfo.InvariantCulture),
                 MaxFrags = statsAll.max_frags.ToString("D", CultureInfo.InvariantCulture),

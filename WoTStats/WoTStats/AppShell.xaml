@@ -23,7 +23,7 @@
     </Shell.Resources>
 
 
-    <!--ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}"  / -->
+    <!--<ShellContent Route="initial_auth" ContentTemplate="{DataTemplate views:AuthPage}"/>-->
 
 
     <ShellItem Route="main" Title="Personal Data">

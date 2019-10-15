@@ -11,12 +11,10 @@ namespace WoTStats
 {
     public class ContentManager
     {
-        public readonly WoTServer server;
-        public readonly string accountId;
+        public User CurrentUser { get; private set; }
+
         private Task<PersonalVisibleData> personalVisibleDataTask;
         private Task<List<VehicleVisibleData>> vehiclesVisibleDataTask;
-
-        public string Nickname { get; set; }
 
         public PersonalVisibleData PersonalVisibleData { get; set; }
 
@@ -44,38 +42,35 @@ namespace WoTStats
 
         public ContentManager()
         {
-            var users = App.Database.GetUsers();
-            var user = users[0];
-            this.accountId = user.AccountId;
-            this.server = user.WoTServer;
-            this.Nickname = user.Nickname;
-            PrepareVehiclesData();
-            PreparePersonalData();
-            
+            // RefreshCurrentUser();
         }
 
-        private void PreparePersonalData()
+        public void RefreshCurrentUser(User newCurrentUser)
         {
-            var dataProvider = new PersonalVisibleDataProvider();
-            this.personalVisibleDataTask = dataProvider.GetPersonalVisibleDataAsync(accountId, server);
-        }
-
-        private void PrepareVehiclesData()
-        {
-            var dataProvider = new VehiclesVisibleDataProvider();
-            this.vehiclesVisibleDataTask = dataProvider.GetVehiclesVisibleDataAsync(accountId, server);
+            this.CurrentUser = newCurrentUser;
         }
 
         public async void CreatePersonalVisibleData()
         {
-            PersonalVisibleData = await this.personalVisibleDataTask;
-            OnPersonalVisibleDataChanged();
+            await Task.Run(async () =>
+            {
+                var dataProvider = new PersonalVisibleDataProvider();
+                this.personalVisibleDataTask = dataProvider.GetPersonalVisibleDataAsync(CurrentUser.AccountId, CurrentUser.WoTServer);
+                PersonalVisibleData = await this.personalVisibleDataTask;
+                OnPersonalVisibleDataChanged();
+            });
+            
         }
 
         public async void CreateVehiclesVisibleData()
         {
-            VehiclesVisibleData = await this.vehiclesVisibleDataTask;
-            OnVehiclesVisibleDataChanged();
+            await Task.Run(async () =>
+            {
+                var dataProvider = new VehiclesVisibleDataProvider();
+                this.vehiclesVisibleDataTask = dataProvider.GetVehiclesVisibleDataAsync(CurrentUser.AccountId, CurrentUser.WoTServer);
+                VehiclesVisibleData = await this.vehiclesVisibleDataTask;
+                OnVehiclesVisibleDataChanged();
+            });
         }
     }
 }

@@ -40,11 +40,18 @@ namespace WoTStats.ViewModels
             IsLoading = false;
         }
 
+        private bool vehiclesDataCreated;
         public void OnAppearing()
         {
-            IsLoading = true;
-            App.ContentManager.CreateVehiclesVisibleData();
-            // TODO tanks -> vehicles
+            if (!vehiclesDataCreated)
+            {
+                vehiclesDataCreated = true;
+                IsLoading = true;
+                App.ContentManager.CreateVehiclesVisibleData();
+            }
+
+            
+            
         }
     }
 }

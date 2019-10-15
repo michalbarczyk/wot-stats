@@ -20,6 +20,8 @@ namespace WoTStats.ViewModels
         private string personalRating;
         private string wn8;
 
+        private bool isLoading;
+
         public string Nickname
         {
             get
@@ -135,11 +137,22 @@ namespace WoTStats.ViewModels
 
         public ICommand RefreshCommand { protected set; get; }
 
+        public bool IsLoading
+        {
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+            get { return isLoading; }
+        }
+
         public PersonalStatisticsViewModel()
         {
             // RefreshCommand = new Command(async () => await Shell.Current.GoToAsync("auth"));
             App.ContentManager.PersonalVisibleDataChanged += OnPersonalVisibleDataChanged;
-            
+            personalDataCreated = false;
+
         }
 
         private void OnPersonalVisibleDataChanged(object source, EventArgs args)
@@ -155,14 +168,22 @@ namespace WoTStats.ViewModels
             WinRate = visibleData.WinRate;
             PersonalRating = visibleData.PersonalRating;
             WN8 = visibleData.WN8;
+
+            IsLoading = false;
         }
 
-        // TODO private bool dataProvided;
+
+        private bool personalDataCreated;
 
         public void OnAppearing()
         {
-           
-            App.ContentManager.CreatePersonalVisibleData();
+            if (!personalDataCreated)
+            {
+                personalDataCreated = true;
+                IsLoading = true;
+                App.ContentManager.CreatePersonalVisibleData();
+            }
+                
         }
     }
 }

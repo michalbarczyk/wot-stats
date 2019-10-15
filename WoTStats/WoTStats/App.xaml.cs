@@ -21,24 +21,27 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users11.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users40.db3")));
             }
         }
 
         public static ContentManager ContentManager
         {
-            get { return contentManager; }
-            set { contentManager = value; }
+            get
+            {
+                return contentManager ?? (contentManager = new ContentManager());
+                           
+            }
         }
 
         public App()
         {
             InitializeComponent();
-
-            MainPage = new AuthPage();
-
-            // TODO AuthPage elimination -> authentication in one of registered shell pages
-                
+            
+            if (App.Database.GetUsersQuantity() == 0)
+                MainPage = new AuthPage();
+            else
+                MainPage = new AppShell();
         }
 
         protected override void OnStart()
