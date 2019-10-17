@@ -56,8 +56,6 @@ namespace WoTStats.ViewModels
         }
         public async void OnSubmit()
         {
-
-            
             PlayerBasicInfoRestService apiService = new PlayerBasicInfoRestService();
             PlayerBasicInfo playerBasicInfo = await apiService.GetPlayerBasicInfoAsync(nickname, wotServer);
 
@@ -78,7 +76,6 @@ namespace WoTStats.ViewModels
                 }
 
                 await App.Database.InsertUserAsync(user);
-                App.ContentManager.RefreshCurrentUser(user);
                 App.Current.MainPage = new AppShell();
                 await Shell.Current.GoToAsync("//main/personal");
             }

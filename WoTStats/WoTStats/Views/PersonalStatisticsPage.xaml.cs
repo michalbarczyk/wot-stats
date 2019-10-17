@@ -25,7 +25,7 @@ namespace WoTStats.Views
         protected override void OnAppearing()
         {
             
-            Debug.WriteLine("\n\n XX: OnAppearing invoked in MainStatisticsPage\n\n");
+            Debug.WriteLine("\n\n OnAppearing invoked in MainStatisticsPage\n\n");
             viewModel.OnAppearing();
         }
     }

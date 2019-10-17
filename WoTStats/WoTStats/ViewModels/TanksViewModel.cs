@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 using WoTStats.Models.DataTemplates;
+using WoTStats.Services.EventArguments;
+using WoTStats.Services.VisibleDataProviders;
 
 namespace WoTStats.ViewModels
 {
@@ -29,14 +31,16 @@ namespace WoTStats.ViewModels
             get { return isLoading; }
         }
 
+        private VehiclesVisibleDataProvider vehiclesVisibleDataProvider;
         public TanksViewModel()
         {
-            App.ContentManager.VehiclesVisibleDataChanged += OnVehiclesVisibleDataChanged;
+            vehiclesVisibleDataProvider = new VehiclesVisibleDataProvider();
+            vehiclesVisibleDataProvider.VehiclesVisibleDataChanged += OnVehiclesVisibleDataChanged;
         }
 
-        private void OnVehiclesVisibleDataChanged(object source, EventArgs args)
+        private void OnVehiclesVisibleDataChanged(object source, OnVehiclesVisibleDataChangedArgs args)
         {
-            TanksData = App.ContentManager.VehiclesVisibleData;
+            TanksData = args.VehiclesVisibleData;
             IsLoading = false;
         }
 
@@ -47,7 +51,7 @@ namespace WoTStats.ViewModels
             {
                 vehiclesDataCreated = true;
                 IsLoading = true;
-                App.ContentManager.CreateVehiclesVisibleData();
+                vehiclesVisibleDataProvider.ProvideVehiclesVisibleData(App.Database.GetUsers()[0]);
             }
 
             

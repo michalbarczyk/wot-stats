@@ -11,32 +11,53 @@ using WoTStats.Models.RestModels.XVM;
 using WoTStats.Services.RestServices.WoT;
 using WoTStats.Services.RestServices.XVM;
 using WoTStats.Models.DataTemplates;
+using WoTStats.Services.EventArguments;
 
 namespace WoTStats.Services.VisibleDataProviders
 {
     class VehiclesVisibleDataProvider
     {
-
         private ReferencialWN8Data referencialWN8Data;
+
+        public delegate void VehiclesVisibleDataChangedEventHandler(object source, OnVehiclesVisibleDataChangedArgs args);
+
+        public event VehiclesVisibleDataChangedEventHandler VehiclesVisibleDataChanged;
+
+
+        protected virtual void OnVehiclesVisibleDataChanged(OnVehiclesVisibleDataChangedArgs args)
+        {
+            VehiclesVisibleDataChanged?.Invoke(this, args);
+        }
 
         public VehiclesVisibleDataProvider()
         {
             referencialWN8Data = null;
         }
 
-        public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync(string accountId, WoTServer server)
+        public async void ProvideVehiclesVisibleData(User user)
+        {
+            var vehiclesVisibleData = await GetVehiclesVisibleDataAsync(user);
+            OnVehiclesVisibleDataChanged(new OnVehiclesVisibleDataChangedArgs
+            {
+                VehiclesVisibleData = vehiclesVisibleData
+            });
+
+
+        }
+
+        public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync(User user)
         {
             var statisticsRestService = new PlayerVehiclesStatisticsRestService();
 
             var tankopediaRestService = new TankopediaVehicleRestService();
 
-            var vehiclesStatistics = await statisticsRestService.GetPlayerVehiclesStatisticsAsync(accountId, server);
+            var vehiclesStatistics = await statisticsRestService.GetPlayerVehiclesStatisticsAsync(user.AccountId, user.WoTServer);
 
             var tanksData = new List<VehicleVisibleData>();
 
             foreach (var stat in vehiclesStatistics)
             {
-                var vehicle = await tankopediaRestService.GetTankopediaVehicleAsync(stat.tank_id, server);
+                var vehicle = await tankopediaRestService.GetTankopediaVehicleAsync(stat.tank_id, user.WoTServer);
 
                 if (vehicle != null)
                 {

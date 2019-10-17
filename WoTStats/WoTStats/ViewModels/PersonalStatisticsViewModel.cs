@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Input;
 using WoTStats.Services;
+using WoTStats.Services.EventArguments;
 using WoTStats.Services.RestServices.WoT;
+using WoTStats.Services.VisibleDataProviders;
 using Xamarin.Forms;
 
 namespace WoTStats.ViewModels
@@ -147,17 +149,19 @@ namespace WoTStats.ViewModels
             get { return isLoading; }
         }
 
+        private PersonalVisibleDataProvider personalVisibleDataProvider;
+
         public PersonalStatisticsViewModel()
         {
-            // RefreshCommand = new Command(async () => await Shell.Current.GoToAsync("auth"));
-            App.ContentManager.PersonalVisibleDataChanged += OnPersonalVisibleDataChanged;
+            personalVisibleDataProvider = new PersonalVisibleDataProvider();
+            personalVisibleDataProvider.PersonalVisibleDataChanged += OnPersonalVisibleDataChanged;
             personalDataCreated = false;
 
         }
 
-        private void OnPersonalVisibleDataChanged(object source, EventArgs args)
+        private void OnPersonalVisibleDataChanged(object source, OnPersonalVisibleDataChangedArgs args)
         {
-            var visibleData = App.ContentManager.PersonalVisibleData;
+            var visibleData = args.PersonalVisibleData;
 
             Nickname = visibleData.Nickname;
             Battles = visibleData.Battles;
@@ -181,7 +185,7 @@ namespace WoTStats.ViewModels
             {
                 personalDataCreated = true;
                 IsLoading = true;
-                App.ContentManager.CreatePersonalVisibleData();
+                personalVisibleDataProvider.ProvidePersonalVisibleData(App.Database.GetUsers()[0]);
             }
                 
         }

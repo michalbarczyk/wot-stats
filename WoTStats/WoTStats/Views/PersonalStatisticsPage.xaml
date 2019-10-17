@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WoTStats.Views.PersonalStatisticsPage"
-             Title="Main Statistics" 
-             Shell.NavBarIsVisible="False" >
+             Title="{Binding Nickname}" 
+             Shell.NavBarIsVisible="True" >
 
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -26,9 +26,6 @@
             </Setter>
         </Style>
 
-        <!--<Style x:Key="label_style" TargetType="Label">
-            <Setter Property="Font" Value = "Courier New, Bold, 7" />
-        </Style>-->
 
     </ContentPage.Resources>
 
@@ -39,101 +36,96 @@
     <Grid>
         <ActivityIndicator Color="Gold" IsRunning="{Binding IsLoading}" />
 
-        <StackLayout>
-            <Label Text="{Binding Nickname}" TextColor="Black" Margin="5" 
-               FontSize="24" FontAttributes="Bold" 
-               VerticalOptions="Center" HorizontalOptions="Center"/>
-            <ScrollView Orientation="Vertical">
-                <StackLayout Margin="0" Padding="5,5">
-                    <!--<Frame HasShadow="True" CornerRadius="2" Margin="6,6,6,3" BackgroundColor="White" HeightRequest="120"
+        <ScrollView Orientation="Vertical">
+            <StackLayout Margin="0" Padding="5,5">
+                <!--<Frame HasShadow="True" CornerRadius="2" Margin="6,6,6,3" BackgroundColor="White" HeightRequest="120"
                        HorizontalOptions="Fill" VerticalOptions="Start">
                     <Label Text="{Binding Nickname}" TextColor="Black"  
                            FontSize="24" FontAttributes="Bold" 
                            VerticalOptions="Center" HorizontalOptions="Center"/>
                 </Frame>-->
-                    <Grid VerticalOptions="FillAndExpand">
+                <Grid VerticalOptions="FillAndExpand">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Frame Grid.Row="0" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3" HeightRequest="60" 
+                    <Frame Grid.Row="0" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3" HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding Battles}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding Battles}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="Battles" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="0" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3" HeightRequest="60" 
+                            <Label Text="Battles" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3" HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding MaxFrags}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding MaxFrags}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="Max Frags" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="1" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
+                            <Label Text="Max Frags" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding HitRatio}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding HitRatio}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="HitRatio" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="1" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
+                            <Label Text="HitRatio" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding MaxDamage}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding MaxDamage}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="Max Damage" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="2" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
+                            <Label Text="Max Damage" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding AvgExperience}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding AvgExperience}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="Average Exp." TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="2" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
+                            <Label Text="Average Exp." TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding WinRate}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding WinRate}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="WinRate" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="3" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
+                            <Label Text="WinRate" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" Grid.Column="0" HasShadow="True" CornerRadius="2" Margin="6,3,3,3"  HeightRequest="60" 
                                    VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding PersonalRating}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding PersonalRating}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                                <Label Text="Personal Rating" TextColor="#7D7D7D"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
+                            <Label Text="Personal Rating" TextColor="#7D7D7D"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 
                        VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                            <StackLayout  HorizontalOptions="CenterAndExpand">
-                                <Label Text="{Binding WN8}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
+                        <StackLayout  HorizontalOptions="CenterAndExpand">
+                            <Label Text="{Binding WN8}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                HorizontalTextAlignment="Center"/>
-                                <Label Text="WN8" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
+                            <Label Text="WN8" TextColor="#7D7D7D" FontSize="18" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
     </Grid>
 
     
