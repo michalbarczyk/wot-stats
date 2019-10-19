@@ -12,12 +12,13 @@ using Android.Widget;
 
 namespace WoTStats.Droid
 {
-    [Activity(Label = "SplashActivity", Icon = "@mipmap/icon", Theme = "@style/SplashTheme", MainLauncher = true)]
+    [Activity(Label = "WoTStats", Icon = "@mipmap/icon", Theme = "@style/SplashTheme", MainLauncher = true)]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            // SetContentView(Resource.Layout.splash_activity);
             StartActivity(typeof(MainActivity));
             Finish();
         }

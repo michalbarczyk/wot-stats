@@ -8,27 +8,27 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
 
-            <Frame BackgroundColor="Firebrick" HasShadow="False" CornerRadius="2">
+            <Frame  HasShadow="True" CornerRadius="2">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Entry x:Name="NicknameEntry" Text="{Binding Nickname}" Placeholder="nickname"   
-                           PlaceholderColor="White" HeightRequest="40"   
-                           TextColor="White"/>
+                           PlaceholderColor="Black" HeightRequest="40"   
+                           TextColor="Black"/>
                 </StackLayout>
             </Frame>
 
-            <Frame BackgroundColor="Firebrick" HasShadow="False" CornerRadius="2">
+            <Frame  HasShadow="True" CornerRadius="2">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Picker ItemsSource="{Binding ServerOptions}" 
                             Title="Server" 
                             SelectedItem="{Binding WoTServer, Mode=TwoWay}"
                              
-                            TextColor="White" TitleColor="White"/>
+                            TextColor="Black" TitleColor="Black"/>
                 </StackLayout>
             </Frame>
 
             <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="Firebrick" CornerRadius="2" />
+                    CornerRadius="2" />
 
         </StackLayout>
     </ContentPage.Content>

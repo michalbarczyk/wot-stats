@@ -28,20 +28,32 @@
 
     <ShellItem Route="main" Title="Personal Data">
         <Tab Title="Personal" Route="personal" Icon="tab_feed.png">
-            <ShellContent ContentTemplate="{DataTemplate views:PersonalStatisticsPage}"/>
+            <ShellContent>
+                <views:PersonalStatisticsPage/>
+            </ShellContent>
         </Tab>
 
         <Tab Title="Tanks" Route="tanks" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate views:TanksPage}"/>
+            <ShellContent>
+                <views:TanksPage/>
+            </ShellContent> 
         </Tab>
 
         <Tab Title="Recomm." Route="recom" Icon="tab_about.png">
-            <ShellContent ContentTemplate="{DataTemplate views:RecommendationsPage}"/>
+            <ShellContent>
+                <views:RecommendationsPage/>
+            </ShellContent>
         </Tab>
 
         <Tab Title="Settings" Icon="tab_about.png">
-            <ShellContent Title="Settings-1" ContentTemplate="{DataTemplate views:SettingsPage}"/>
-            <!--ShellContent Title="Settings-2" ContentTemplate="{DataTemplate views:SettingsPage}"/ -->
+            <ShellContent Title="S1">
+                <views:SettingsPage/>
+            </ShellContent>
+            <ShellContent Title="S2">
+                <views:SettingsPage/>
+            </ShellContent>
+            <!--<ShellContent Title="Settings-1" ContentTemplate="{DataTemplate views:SettingsPage}"/>-->
+            <!--<ShellContent Title="Settings-2" ContentTemplate="{DataTemplate views:SettingsPage}"/> -->
             
         </Tab>
 

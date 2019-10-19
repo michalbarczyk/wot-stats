@@ -36,13 +36,14 @@ namespace WoTStats.Services.VisibleDataProviders
 
         public async void ProvideVehiclesVisibleData(User user)
         {
-            var vehiclesVisibleData = await GetVehiclesVisibleDataAsync(user);
-            OnVehiclesVisibleDataChanged(new OnVehiclesVisibleDataChangedArgs
+            await Task.Run(async () =>
             {
-                VehiclesVisibleData = vehiclesVisibleData
+                var vehiclesVisibleData = await GetVehiclesVisibleDataAsync(user);
+                OnVehiclesVisibleDataChanged(new OnVehiclesVisibleDataChangedArgs
+                {
+                    VehiclesVisibleData = vehiclesVisibleData
+                });
             });
-
-
         }
 
         public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync(User user)

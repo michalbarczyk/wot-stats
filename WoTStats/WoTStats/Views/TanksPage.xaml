@@ -6,24 +6,24 @@
              mc:Ignorable="d"
              x:Class="WoTStats.Views.TanksPage"
              Title="Tanks"
-             Shell.NavBarIsVisible="False" >
+             Shell.NavBarIsVisible="True" >
     <ContentPage.Content>
         <Grid>
-            <ActivityIndicator Color="Gold" IsRunning="{Binding IsLoading}" />
+            <ActivityIndicator Color="Gray" IsRunning="{Binding IsLoading}" />
 
             <CollectionView Margin="0,0,0,0"  ItemsSource="{Binding TanksData}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate >
-                        <ContentView Padding="15">
+                        <ContentView Padding="18,9">
 
-                            <Frame HasShadow="True" CornerRadius="2" Margin="6" BackgroundColor="White" HeightRequest="200"
+                            <Frame HasShadow="True" CornerRadius="2" Margin="0,0" BackgroundColor="White" HeightRequest="200"
                                HorizontalOptions="Fill" VerticalOptions="Start">
 
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="4*" />
+                                        <RowDefinition Height="4*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -32,51 +32,51 @@
 
                                     <Label Grid.Row ="0" Grid.Column="0" Grid.ColumnSpan="2"
                                            Text="{Binding Name}" TextColor="Black"  
-                                           FontSize="24" FontAttributes="Bold" 
-                                           VerticalOptions="Center" HorizontalOptions="Center"/>
+                                           FontSize="26" FontAttributes="Bold" 
+                                           VerticalOptions="Start" HorizontalOptions="Center"/>
 
                                     <StackLayout Grid.Row ="1" Grid.Column="0">
                                         <Label 
                                             Text="{Binding Battles}" TextColor="Black"  
                                             FontSize="20" FontAttributes="Bold" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="End" HorizontalOptions="Center"/>
                                         <Label 
                                             Text="Battles" TextColor="Black"  
                                             FontSize="16" FontAttributes="None" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="Start" HorizontalOptions="Center"/>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row ="1" Grid.Column="1">
                                         <Label 
                                             Text="{Binding WinRate}" TextColor="Black"  
                                             FontSize="20" FontAttributes="Bold" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="End" HorizontalOptions="Center"/>
                                         <Label 
                                             Text="WinRate" TextColor="Black"  
                                             FontSize="16" FontAttributes="None" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="Start" HorizontalOptions="Center"/>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row ="2" Grid.Column="0">
                                         <Label 
                                             Text="{Binding AvgDamage}" TextColor="Black"  
                                             FontSize="20" FontAttributes="Bold" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="End" HorizontalOptions="Center"/>
                                         <Label 
                                             Text="AvgDamage" TextColor="Black"  
                                             FontSize="16" FontAttributes="None" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="Start" HorizontalOptions="Center"/>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row ="2" Grid.Column="1">
                                         <Label 
                                             Text="{Binding WN8}" TextColor="Black"  
                                             FontSize="20" FontAttributes="Bold" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="End" HorizontalOptions="Center"/>
                                         <Label 
                                             Text="WN8" TextColor="Black"  
                                             FontSize="16" FontAttributes="None" 
-                                            VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            VerticalOptions="Start" HorizontalOptions="Center"/>
                                     </StackLayout>
 
                                 </Grid>

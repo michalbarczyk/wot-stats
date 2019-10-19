@@ -30,20 +30,14 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="refresh.png" Command="{Binding RefreshCommand}" />
+        <!--<ToolbarItem IconImageSource="refresh.png" Command="{Binding RefreshCommand}" />-->
     </ContentPage.ToolbarItems>
 
     <Grid>
-        <ActivityIndicator Color="Gold" IsRunning="{Binding IsLoading}" />
+        <ActivityIndicator Color="Gray" IsRunning="{Binding IsLoading}" />
 
-        <ScrollView Orientation="Vertical">
-            <StackLayout Margin="0" Padding="5,5">
-                <!--<Frame HasShadow="True" CornerRadius="2" Margin="6,6,6,3" BackgroundColor="White" HeightRequest="120"
-                       HorizontalOptions="Fill" VerticalOptions="Start">
-                    <Label Text="{Binding Nickname}" TextColor="Black"  
-                           FontSize="24" FontAttributes="Bold" 
-                           VerticalOptions="Center" HorizontalOptions="Center"/>
-                </Frame>-->
+        <ScrollView Orientation="Vertical" IsVisible="{Binding IsVisible}">
+            <StackLayout Margin="0" Padding="5,5" >
                 <Grid VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>

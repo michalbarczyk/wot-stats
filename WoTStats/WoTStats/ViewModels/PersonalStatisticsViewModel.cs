@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using WoTStats.Services;
 using WoTStats.Services.EventArguments;
@@ -21,8 +22,8 @@ namespace WoTStats.ViewModels
         private string winRate;
         private string personalRating;
         private string wn8;
-
         private bool isLoading;
+        private bool isVisible;
 
         public string Nickname
         {
@@ -149,17 +150,29 @@ namespace WoTStats.ViewModels
             get { return isLoading; }
         }
 
+        public bool IsVisible
+        {
+            set
+            {
+                isVisible = value;
+                OnPropertyChanged();
+            }
+            get { return isVisible; }
+        }
+
         private PersonalVisibleDataProvider personalVisibleDataProvider;
 
         public PersonalStatisticsViewModel()
         {
             personalVisibleDataProvider = new PersonalVisibleDataProvider();
             personalVisibleDataProvider.PersonalVisibleDataChanged += OnPersonalVisibleDataChanged;
-            personalDataCreated = false;
+            IsLoading = true;
+            IsVisible = false;
+            personalVisibleDataProvider.ProvidePersonalVisibleData(App.Database.GetUsers()[0]);
 
         }
 
-        private void OnPersonalVisibleDataChanged(object source, OnPersonalVisibleDataChangedArgs args)
+        private async void OnPersonalVisibleDataChanged(object source, OnPersonalVisibleDataChangedArgs args)
         {
             var visibleData = args.PersonalVisibleData;
 
@@ -173,21 +186,15 @@ namespace WoTStats.ViewModels
             PersonalRating = visibleData.PersonalRating;
             WN8 = visibleData.WN8;
 
+            await Task.Delay(10000);
+
             IsLoading = false;
+            IsVisible = true;
         }
-
-
-        private bool personalDataCreated;
 
         public void OnAppearing()
         {
-            if (!personalDataCreated)
-            {
-                personalDataCreated = true;
-                IsLoading = true;
-                personalVisibleDataProvider.ProvidePersonalVisibleData(App.Database.GetUsers()[0]);
-            }
-                
+            
         }
     }
 }

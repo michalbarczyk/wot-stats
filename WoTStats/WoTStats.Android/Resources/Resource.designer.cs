@@ -9757,13 +9757,16 @@ namespace WoTStats.Droid
 			public const int ShellContent = 2130968659;
 			
 			// aapt resource value: 0x7f040054
-			public const int support_simple_spinner_dropdown_item = 2130968660;
+			public const int splash_activity = 2130968660;
 			
 			// aapt resource value: 0x7f040055
-			public const int Tabbar = 2130968661;
+			public const int support_simple_spinner_dropdown_item = 2130968661;
 			
 			// aapt resource value: 0x7f040056
-			public const int Toolbar = 2130968662;
+			public const int Tabbar = 2130968662;
+			
+			// aapt resource value: 0x7f040057
+			public const int Toolbar = 2130968663;
 			
 			static Layout()
 			{

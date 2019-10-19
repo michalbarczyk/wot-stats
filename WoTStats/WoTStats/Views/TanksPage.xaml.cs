@@ -22,9 +22,10 @@ namespace WoTStats.Views
 
         public TanksPage()
         {
+            Debug.WriteLine("\n\n TanksPage constructor invoked \n\n");
+
             BindingContext = viewModel = new TanksViewModel();
 
-            
             InitializeComponent();
         }
 

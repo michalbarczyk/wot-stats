@@ -36,6 +36,9 @@ namespace WoTStats.ViewModels
         {
             vehiclesVisibleDataProvider = new VehiclesVisibleDataProvider();
             vehiclesVisibleDataProvider.VehiclesVisibleDataChanged += OnVehiclesVisibleDataChanged;
+            IsLoading = true;
+            vehiclesVisibleDataProvider.ProvideVehiclesVisibleData(App.Database.GetUsers()[0]); // TODO
+
         }
 
         private void OnVehiclesVisibleDataChanged(object source, OnVehiclesVisibleDataChangedArgs args)
@@ -44,18 +47,9 @@ namespace WoTStats.ViewModels
             IsLoading = false;
         }
 
-        private bool vehiclesDataCreated;
         public void OnAppearing()
         {
-            if (!vehiclesDataCreated)
-            {
-                vehiclesDataCreated = true;
-                IsLoading = true;
-                vehiclesVisibleDataProvider.ProvideVehiclesVisibleData(App.Database.GetUsers()[0]);
-            }
-
-            
-            
+            /* functionality moved experimentally to the constructor */
         }
     }
 }
