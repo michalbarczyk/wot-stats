@@ -8,11 +8,18 @@
              Title="Recommendations">
 
     <StackLayout Margin="0" Padding="5,5">
-        <Frame HasShadow="True" CornerRadius="2" Margin="6" BackgroundColor="White" HeightRequest="120"
-               HorizontalOptions="Fill" VerticalOptions="Start">
-            <Label Text="[Recommendations in development]" TextColor="Black"  
-                   FontSize="18" FontAttributes="Bold" 
-                   VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Frame HasShadow="True" CornerRadius="2" Margin="6,3,3,3" HeightRequest="60" 
+               VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label Text="Recommendations will be available soon." 
+                       TextColor="Black" 
+                       FontSize="16" 
+                       FontAttributes="None" 
+                       HorizontalOptions="FillAndExpand" 
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+            </StackLayout>
         </Frame>
     </StackLayout>
 

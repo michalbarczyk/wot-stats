@@ -169,10 +169,9 @@ namespace WoTStats.ViewModels
             IsLoading = true;
             IsVisible = false;
             personalVisibleDataProvider.ProvidePersonalVisibleData(App.Database.GetUsers()[0]);
-
         }
 
-        private async void OnPersonalVisibleDataChanged(object source, OnPersonalVisibleDataChangedArgs args)
+        private void OnPersonalVisibleDataChanged(object source, OnPersonalVisibleDataChangedArgs args)
         {
             var visibleData = args.PersonalVisibleData;
 
@@ -185,8 +184,6 @@ namespace WoTStats.ViewModels
             WinRate = visibleData.WinRate;
             PersonalRating = visibleData.PersonalRating;
             WN8 = visibleData.WN8;
-
-            await Task.Delay(10000);
 
             IsLoading = false;
             IsVisible = true;

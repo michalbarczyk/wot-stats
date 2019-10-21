@@ -26,7 +26,7 @@
                 </StackLayout>
             </Frame>
 
-            <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
+            <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="Black"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     CornerRadius="2" />
 

@@ -14,11 +14,26 @@
         <!--<ToolbarItem Text="Logout"  Command="{Binding LogoutCommand}" />-->
     </ContentPage.ToolbarItems>
 
-    <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+    <StackLayout Orientation="Vertical" Padding="30" Spacing="0" HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
 
-        <Button Command="{Binding LogoutCommand}" Text="Logout" TextColor="Black"  
-                FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+        <Button Command="{Binding LogoutCommand}" Text="Logout" TextColor="Black" Margin="0,0,0,40" 
+                FontAttributes="Bold" FontSize="Large" HorizontalOptions="Fill"  
                 BackgroundColor="Gainsboro" CornerRadius="2" />
+
+        
+
+        <Label TextColor="Blue" Text="{Binding TankIconAuthorUrl}"
+               FontSize="Small" HorizontalOptions="Center"
+               VerticalOptions="End" >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TankIconAuthorCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label TextColor="Black" Text="tank icon author"
+               FontSize="Small" HorizontalOptions="Center" 
+               VerticalOptions="End" >
+        </Label>
 
     </StackLayout>
 

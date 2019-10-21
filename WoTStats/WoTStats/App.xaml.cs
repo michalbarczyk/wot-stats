@@ -20,7 +20,7 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users42.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users43.db3")));
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WoTStats.Models.DatabaseModels;
@@ -44,6 +45,8 @@ namespace WoTStats.Services.VisibleDataProviders
                     VehiclesVisibleData = vehiclesVisibleData
                 });
             });
+
+
         }
 
         public async Task<List<VehicleVisibleData>> GetVehiclesVisibleDataAsync(User user)
@@ -69,7 +72,7 @@ namespace WoTStats.Services.VisibleDataProviders
                         Name = vehicle.name,
                         AvgDamage = ((double)stat.all.damage_dealt / stat.all.battles).ToString("F", CultureInfo.InvariantCulture),
                         Battles = stat.all.battles.ToString(),
-                        WinRate = ((double)stat.all.wins / stat.all.battles).ToString("F", CultureInfo.InvariantCulture),
+                        WinRate = ((double)stat.all.wins / stat.all.battles).ToString("P", CultureInfo.InvariantCulture),
                         WN8 = wn8.ToString("F", CultureInfo.InvariantCulture),
                     });
                 }

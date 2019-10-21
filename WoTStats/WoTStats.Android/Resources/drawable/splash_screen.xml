@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
@@ -6,11 +6,10 @@
   </item>
   <item>
     <bitmap
-      android:src="@drawable/logo"
+      android:src="@drawable/tank_icon"
       android:tileMode="disabled"
       android:gravity="center"
       android:alpha="0.5"/>
   </item>
-  
-</layer-list>
 
+</layer-list>
