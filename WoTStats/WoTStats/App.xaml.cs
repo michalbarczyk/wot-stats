@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Services;
+using WoTStats.Services.Database;
 using WoTStats.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,7 +21,7 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users43.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users44.db3")));
             }
         }
 

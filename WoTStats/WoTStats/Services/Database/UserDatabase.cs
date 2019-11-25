@@ -1,11 +1,9 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using WoTStats.Models.DatabaseModels;
 
-namespace WoTStats.Services
+namespace WoTStats.Services.Database
 {
     public class UserDatabase
     {

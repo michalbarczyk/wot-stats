@@ -16,24 +16,4 @@ namespace WoTStats.Models.RestModels.WoT.PlayerBasicInfo
         [JsonProperty("data")]
         public List<Data> Datas { get; set; }
     }
-
-    public class Data
-    {
-        [JsonProperty("nickname")]
-        public string Nickname { get; set; }
-
-        [JsonProperty("account_id")]
-        public string AccountId { get; set; }
-    }
-
-    public class Meta
-    {
-        [JsonProperty("count")]
-        public int Count { get; set; }
-    }
-
-
-
-
-
 }
