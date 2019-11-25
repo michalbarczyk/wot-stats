@@ -13,6 +13,7 @@ using WoTStats.Services.RestServices.WoT;
 using WoTStats.Services.RestServices.XVM;
 using WoTStats.Models.DataTemplates;
 using WoTStats.Services.EventArguments;
+using WoTStats.Services.Utils;
 
 namespace WoTStats.Services.VisibleDataProviders
 {

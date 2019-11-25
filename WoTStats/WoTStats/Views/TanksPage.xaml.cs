@@ -22,7 +22,7 @@ namespace WoTStats.Views
 
         public TanksPage()
         {
-            Debug.WriteLine("\n\n TanksPage constructor invoked \n\n");
+            Debug.WriteLine("\nTanksPage constructor invoked\n");
 
             BindingContext = viewModel = new TanksViewModel();
 
@@ -31,8 +31,7 @@ namespace WoTStats.Views
 
         protected override void OnAppearing()
         {
-            viewModel.OnAppearing();
-            Debug.WriteLine("\n\n OnAppearing invoked in TanksPage\n\n");
+            Debug.WriteLine("\nOnAppearing invoked in TanksPage\n");
         }
     }
 }

@@ -106,7 +106,7 @@
                         <StackLayout  HorizontalOptions="CenterAndExpand">
                             <Label Text="{Binding PersonalRating}" TextColor="Black" FontSize="24" FontAttributes="Bold" HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"/>
-                            <Label Text="Personal Rating" TextColor="#7D7D7D"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                            <Label Text="Personal Rating" TextColor="#7D7D7D" FontSize="17" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Row="3" Grid.Column="1" HasShadow="True" CornerRadius="2" Margin="3,3,6,3"  HeightRequest="60" 

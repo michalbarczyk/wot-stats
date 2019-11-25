@@ -46,11 +46,6 @@ namespace WoTStats.ViewModels
             TanksData = args.VehiclesVisibleData;
             IsLoading = false;
         }
-
-        public void OnAppearing()
-        {
-            /* functionality moved experimentally to the constructor */
-        }
     }
 }
 

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using WoTStats.Models.DatabaseModels;
 using WoTStats.Services.RestServices.WoT;
 using WoTStats.Services.RestServices.XVM;
 
@@ -11,7 +8,7 @@ using WoTStats.Services.RestServices.XVM;
  * experimental class providing overall WN8 value per player
  */
 
-namespace WoTStats.Services
+namespace WoTStats.Services.Utils
 {
     public class CalculatorWN8Overall
     {

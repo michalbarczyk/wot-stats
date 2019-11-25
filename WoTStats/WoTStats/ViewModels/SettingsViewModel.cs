@@ -25,10 +25,5 @@ namespace WoTStats.ViewModels
                 await Browser.OpenAsync(new Uri($"https://{TankIconAuthorUrl}"), BrowserLaunchMode.SystemPreferred);
             });
         }
-
-        //public async void OnAppearing()
-        //{
-           
-        //}
     }
 }

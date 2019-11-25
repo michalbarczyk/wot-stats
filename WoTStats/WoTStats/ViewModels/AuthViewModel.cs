@@ -6,6 +6,7 @@ using System.Windows.Input;
 using WoTStats.Models.DatabaseModels;
 using WoTStats.Models.RestModels.WoT.PlayerBasicInfo;
 using WoTStats.Services.RestServices.WoT;
+using WoTStats.Services.UserAuthentication;
 using WoTStats.Views;
 using Xamarin.Forms;
 
@@ -13,13 +14,11 @@ namespace WoTStats.ViewModels
 {
     public class AuthViewModel : BaseViewModel
     {
-        public Action<string> DisplayInvalidLoginPrompt;
+        public Action DisplayInvalidLoginPrompt;
         
         private string nickname;
 
         private WoTServer wotServer;
-
-
 
         public string Nickname
         {
@@ -43,52 +42,33 @@ namespace WoTStats.ViewModels
         public IList<WoTServer> ServerOptions { set; get; }
 
         public ICommand SubmitCommand { protected set; get; }
+
+        private AuthEngine authEngine;
         public AuthViewModel()
         {
+            authEngine = new AuthEngine();
             SubmitCommand = new Command(OnSubmit);
-            ServerOptions = new List<WoTServer>(new WoTServer[]
+            ServerOptions = new List<WoTServer> 
             {
                 WoTServer.ru,
                 WoTServer.eu,
                 WoTServer.na,
                 WoTServer.asia
-            });
+            };
         }
         public async void OnSubmit()
         {
-            PlayerBasicInfoRestService apiService = new PlayerBasicInfoRestService();
-            PlayerBasicInfo playerBasicInfo = await apiService.GetPlayerBasicInfoAsync(nickname, wotServer);
+            var authOk = await authEngine.Authenticate(Nickname, WoTServer);
 
-            if (playerBasicInfo.Meta.Count > 0)
+            if (authOk)
             {
-                User user = new User
-                {
-                    Nickname = playerBasicInfo.Datas[0].Nickname,
-                    AccountId = playerBasicInfo.Datas[0].AccountId,
-                    WoTServer = wotServer
-                };
-
-                var allUsers = await App.Database.GetUsersAsync();
-                if (allUsers.Count > 0)
-                {
-                    var userToBeDeleted = allUsers[0];
-                    await App.Database.DeleteUserAsync(userToBeDeleted);
-                }
-
-                await App.Database.InsertUserAsync(user);
-                App.Current.MainPage = new AppShell();
+                Application.Current.MainPage = new AppShell();
                 await Shell.Current.GoToAsync("//main/personal");
             }
             else
             {
-                DisplayInvalidLoginPrompt(playerBasicInfo.Meta.Count.ToString());
+                DisplayInvalidLoginPrompt();
             }
-
-        }
-
-        public void OnAppearing()
-        {
-            
         }
     }
 }

@@ -19,7 +19,5 @@ namespace WoTStats.Views
             BindingContext = viewModel = new SettingsViewModel();
             InitializeComponent();
         }
-
-        // protected override void OnAppearing() => viewModel.OnAppearing();
     }
 }

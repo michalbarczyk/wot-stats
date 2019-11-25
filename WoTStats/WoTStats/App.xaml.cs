@@ -21,7 +21,7 @@ namespace WoTStats
             get
             {
                 return database ?? (database = new UserDatabase(Path.Combine(
-                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users44.db3")));
+                           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Users46.db3")));
             }
         }
 

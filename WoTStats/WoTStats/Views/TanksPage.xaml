@@ -63,7 +63,7 @@
                                             FontSize="20" FontAttributes="Bold" 
                                             VerticalOptions="End" HorizontalOptions="Center"/>
                                         <Label 
-                                            Text="AvgDamage" TextColor="Black"  
+                                            Text="Avg. Damage" TextColor="Black"  
                                             FontSize="16" FontAttributes="None" 
                                             VerticalOptions="Start" HorizontalOptions="Center"/>
                                     </StackLayout>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,15 @@ namespace WoTStats.Views
         public AuthPage()
         {
             BindingContext = viewModel = new AuthViewModel();
-            viewModel.DisplayInvalidLoginPrompt += 
-                (string response) => DisplayAlert($"Invalid login: {response} matching nicknames", "Type correct login", "OK");
+            viewModel.DisplayInvalidLoginPrompt += () => 
+                    DisplayAlert("Invalid login: 0 matching nicknames found", "Type correct login", "OK");
+
             InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
-            viewModel.OnAppearing();
+            Debug.WriteLine("\nOnAppearing invoked in AuthPage\n");
         }
     }
 }

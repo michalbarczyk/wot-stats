@@ -188,10 +188,5 @@ namespace WoTStats.ViewModels
             IsLoading = false;
             IsVisible = true;
         }
-
-        public void OnAppearing()
-        {
-            
-        }
     }
 }
